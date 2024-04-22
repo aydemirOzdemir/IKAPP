@@ -7,7 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\IKAPP.Domain\IKAPP.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AggregateModels\Companies\CompanyValueObjects\" />
+    <Folder Include="AggregateModels\Departments\DepartmentValueObjects\" />
+    <Folder Include="AggregateModels\Expenses\ExpenseValueObjects\" />
+    <Folder Include="AggregateModels\TypeofPermissions\TypeofPermissionObjects\" />
+    <Folder Include="AggregateModels\Vocations\VocationObjects\" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
 ﻿using IKAPP.Domain.Entities.Enums;
+using IKAPP.Domain.SeedWorks.Base.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace IKAPP.Domain.Entities.Interfaces;
 
 public interface IEntity
 {
-    Guid Id { get; set; }
+    string Id { get; init; }
     Status Status { get; set; }
 }
