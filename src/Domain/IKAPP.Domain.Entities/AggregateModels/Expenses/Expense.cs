@@ -1,5 +1,6 @@
 ﻿using IKAPP.Domain.Entities.AggregateModels.Advances.AdvanceValueObjects;
 using IKAPP.Domain.Entities.AggregateModels.Companies;
+using IKAPP.Domain.Entities.AggregateModels.Expenses.ExpenseDTOs;
 using IKAPP.Domain.Entities.AggregateModels.Expenses.ExpenseRules;
 using IKAPP.Domain.Entities.AggregateModels.Personals;
 using IKAPP.Domain.Entities.Enums;
@@ -18,21 +19,24 @@ public  class Expense:BaseEntityForBusiness,IAggregateRoot
 {
     private readonly ExpenseRule rules;
 
-    public Expense(string id, Name name,TotalAmount totalAmount,Currency currency,TypeofExpenses typeofExpenses,string documantation,string personalId,string? companyId,Personal personal,Company? company) : base(id, name)
+    public Expense(ExpenseDTO expenseDTO) : base(expenseDTO.Id, new(expenseDTO.Name))
     {
         rules = new();
-        TotalAmount = totalAmount;
-        rules.CurrencyCanNotBeEmpty(currency);
-        Currency = currency;
-        rules.PersonalIdCanNotBeEmpty(personalId);
-        PersonalId = personalId;
-        rules.DocumantationCanNotBeEmpty(documantation);
-        Documantation = documantation;
-        rules.TypeofExpenseCanNotBeEmpty(typeofExpenses);
-        TypeofExpense = typeofExpenses;
-        CompanyId = companyId;
-        Personal= personal;
-        Company= company;
+        TotalAmount = new(expenseDTO.TotalAmount);
+        rules.CurrencyCanNotBeEmpty(expenseDTO.Currency);
+        Currency = expenseDTO.Currency;
+        rules.PersonalIdCanNotBeEmpty(expenseDTO.PersonalId);
+        PersonalId = expenseDTO.PersonalId;
+        rules.DocumantationCanNotBeEmpty(expenseDTO.Documantation);
+        Documantation = expenseDTO.Documantation;
+        rules.TypeofExpenseCanNotBeEmpty(expenseDTO.TypeofExpense);
+        TypeofExpense = expenseDTO.TypeofExpense;
+        CompanyId = expenseDTO.CompanyId;
+        Personal= expenseDTO.Personal;
+        Company= expenseDTO.Company;
+        DateofReply = expenseDTO.DateofReply;
+        RequestDate= expenseDTO.RequestDate;
+
         
     }
     public TotalAmount TotalAmount { get; private set; }

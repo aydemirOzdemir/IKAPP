@@ -1,4 +1,5 @@
-﻿using IKAPP.Domain.Entities.AggregateModels.Advances.AdvanceRules;
+﻿using IKAPP.Domain.Entities.AggregateModels.Advances.AdvanceDTOs;
+using IKAPP.Domain.Entities.AggregateModels.Advances.AdvanceRules;
 using IKAPP.Domain.Entities.AggregateModels.Advances.AdvanceValueObjects;
 using IKAPP.Domain.Entities.AggregateModels.Companies;
 using IKAPP.Domain.Entities.AggregateModels.Personals;
@@ -17,21 +18,25 @@ namespace IKAPP.Domain.Entities.AggregateModels.Advances;
 public  class Advance:BaseEntityForBusiness,IAggregateRoot
 {
     private readonly AdvanceRule rules;
-    public Advance(string id,Name name,TotalAmount totalAmount,Currency currency,TypeofAdvance typeofAdvance,string description,string personalId,string? companyId,Personal personal,Company? company):base(id, name)
+    public Advance(AdvanceDTO advanceDTO):base(advanceDTO.Id,new(advanceDTO.Name))
     {
         rules= new();
-        rules.CurrencyCanNotBeEmpty(currency);
-        rules.TypeofAdvanceCanNotBeEmpty(typeofAdvance);
-        rules.DescriptionCanNotBeEmpty(description);
-        rules.PersonalIdCanNotBeEmpty(personalId);
-        TotalAmount = totalAmount;
-        Currency = currency;
-        TypeofAdvance = typeofAdvance;
-        Description = description;
-        PersonalId = personalId;
-        CompanyId = companyId;
-        Personal = personal;
-        Company = company;
+        rules.CurrencyCanNotBeEmpty(advanceDTO.Currency);
+        rules.TypeofAdvanceCanNotBeEmpty(advanceDTO.TypeofAdvance);
+        rules.DescriptionCanNotBeEmpty(advanceDTO.Description);
+        rules.PersonalIdCanNotBeEmpty(advanceDTO.PersonalId);
+        TotalAmount = new(advanceDTO.TotalAmount) ;
+        Currency =advanceDTO.Currency;
+        TypeofAdvance = advanceDTO.TypeofAdvance;
+        Description = advanceDTO.Description;
+        PersonalId = advanceDTO.PersonalId;
+        CompanyId = advanceDTO.CompanyId;
+        Personal = advanceDTO.Personal;
+        Company = advanceDTO.Company;
+        StatusofApproval= advanceDTO.StatusofApproval;
+        DateofReply = advanceDTO.DateofReply;
+        RequestDate=advanceDTO.RequestDate;
+       
     }
  
     public TotalAmount TotalAmount { get;  private set; }

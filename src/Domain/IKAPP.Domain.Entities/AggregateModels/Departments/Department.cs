@@ -1,4 +1,5 @@
-﻿using IKAPP.Domain.Entities.AggregateModels.Personals;
+﻿using IKAPP.Domain.Entities.AggregateModels.Departments.DepartmentDTOs;
+using IKAPP.Domain.Entities.AggregateModels.Personals;
 using IKAPP.Domain.Entities.SeedWorks;
 using IKAPP.Domain.Entities.SeedWorks.Base;
 using IKAPP.Domain.SeedWorks.Base.Shared;
@@ -12,7 +13,7 @@ namespace IKAPP.Domain.Entities.AggregateModels.Departments;
 
 public  class Department:AuditableEntity,IAggregateRoot
 {
-    public Department(string id, Name name) : base(id, name)
+    public Department(DepartmentDTO departmentDTO) : base(departmentDTO.Id,new( departmentDTO.Name))
     {
         Personeller = new HashSet<Personal>();
         Şiketler = new HashSet<DepartmentCompany>();

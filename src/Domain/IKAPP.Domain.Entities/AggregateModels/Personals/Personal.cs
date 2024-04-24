@@ -3,6 +3,7 @@ using IKAPP.Domain.Entities.AggregateModels.Companies;
 using IKAPP.Domain.Entities.AggregateModels.Departments;
 using IKAPP.Domain.Entities.AggregateModels.Expenses;
 using IKAPP.Domain.Entities.AggregateModels.Permissions;
+using IKAPP.Domain.Entities.AggregateModels.Personals.PersonalDTOs;
 using IKAPP.Domain.Entities.AggregateModels.Personals.PersonalRules;
 using IKAPP.Domain.Entities.AggregateModels.Personals.PersonalValueObjects;
 using IKAPP.Domain.Entities.AggregateModels.Vocations;
@@ -20,38 +21,46 @@ namespace IKAPP.Domain.Entities.AggregateModels.Personals;
 public  class Personal:IdentityUser,IAggregateRoot
 {
     private readonly PersonalRule rules;
-    public  Personal(PersonalNames names,IdentityNumber identityNumber,DateTime startDateOfWork, DateTime? finishedDateOfWork,BirthDate birthDate, decimal? salary,string address,Gender gender,string placeofBirth,string? picturePath,string vocationId,string companyId,string departmantId,Department department,Vocation vocation,Company company)
+    public  Personal(PersonalDTO personalDTO)
     {
         rules = new();
         Advances = new HashSet<Advance>();
         Expenses = new HashSet<Expense>();
         Permissions = new HashSet<Permission>();
-        PersonalNames = names;
-        TCIdentityNumber = identityNumber;
-        rules.GenderCanNotBeEmpty(gender);
-        Gender= gender;
-        rules.StartDateOfWorkRule(startDateOfWork);
-        StartDateOfWork = startDateOfWork;
-        FinishDateOfWork = finishedDateOfWork;
-        BirthDate = birthDate;
-        Salary = salary;
-        rules.AddressCanNotBeEmpty(address);
-        Address= address;
-        rules.PlaceOfBirthCanNotBeEmpty(placeofBirth);
-        PlaceOfBirth= placeofBirth;
-        PicturePath = picturePath;
-        rules.VocationIdCanNotBeEmpty(vocationId);
-        rules.DepartmantIdCanNotBeEmpty(departmantId);
-        rules.CompanyIdCanNotBeEmpty(companyId);
-        VocationId= vocationId;
-        CompanyId=companyId;
-        DepartmanId=departmantId;
-        rules.VocationCanNotBeEmpty(vocation);
-        rules.DepartmantCanNotBeEmpty(department);
-        rules.CompanyCanNotBeEmpty(company);
-        Company = company;
-        Department = department;
-        Vocation = vocation;
+        PersonalNames = new(personalDTO.FirstName,personalDTO.SecondName,personalDTO.LastName,personalDTO.SecondLastName);
+        IdentityNumber identityNumber = new(personalDTO.TCIdentityNumber);
+        rules.IdentityNumberCanNotBeEmpty(personalDTO.TCIdentityNumber);
+        rules.IdentityNumberLengthMustBe11(personalDTO.TCIdentityNumber);
+        rules.IdentityNumberMustBeValid(personalDTO.TCIdentityNumber);
+        TCIdentityNumber = new(personalDTO.TCIdentityNumber);
+        rules.GenderCanNotBeEmpty(personalDTO.Gender);
+        Gender= personalDTO.Gender;
+        rules.StartDateOfWorkRule(personalDTO.StartDateOfWork);
+        StartDateOfWork = personalDTO.StartDateOfWork;
+        FinishDateOfWork = personalDTO.FinishDateOfWork;
+        rules.BirthDateRules(personalDTO.BirthDate);
+        BirthDate = new(personalDTO.BirthDate);
+        Salary = personalDTO.Salary;
+        rules.AddressCanNotBeEmpty(personalDTO.Address);
+        Address= personalDTO.Address;
+        rules.PlaceOfBirthCanNotBeEmpty(personalDTO.PlaceOfBirth);
+        PlaceOfBirth= personalDTO.PlaceOfBirth;
+        PicturePath = personalDTO.PicturePath;
+        rules.VocationIdCanNotBeEmpty(personalDTO.VocationId);
+        rules.DepartmantIdCanNotBeEmpty(personalDTO.DepartmanId);
+        rules.CompanyIdCanNotBeEmpty(personalDTO.CompanyId);
+        VocationId= personalDTO.VocationId;
+        CompanyId=personalDTO.CompanyId;
+        DepartmanId=personalDTO.DepartmanId;
+        rules.VocationCanNotBeEmpty(personalDTO.Vocation);
+        rules.DepartmantCanNotBeEmpty(personalDTO.Department);
+        rules.CompanyCanNotBeEmpty(personalDTO.Company);
+        Company = personalDTO.Company;
+        Department = personalDTO.Department;
+        Vocation = personalDTO.Vocation;
+        UserName = personalDTO.Email;
+        Email= personalDTO.Email;
+        PhoneNumber = personalDTO.PhoneNumber;
     }
     public PersonalNames PersonalNames { get; private set; }
     public IdentityNumber TCIdentityNumber { get; private set; } 

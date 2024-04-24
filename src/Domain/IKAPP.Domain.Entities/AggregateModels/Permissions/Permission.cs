@@ -1,4 +1,5 @@
 ﻿using IKAPP.Domain.Entities.AggregateModels.Companies;
+using IKAPP.Domain.Entities.AggregateModels.Permissions.PermissionDTOs;
 using IKAPP.Domain.Entities.AggregateModels.Permissions.PermissionRules;
 using IKAPP.Domain.Entities.AggregateModels.Permissions.PermissionValueObjects;
 using IKAPP.Domain.Entities.AggregateModels.Personals;
@@ -18,20 +19,20 @@ public  class Permission:BaseEntityForBusiness,IAggregateRoot
 {
     private readonly PermissionRule rules;
 
-    public Permission(string id, Name name,PermissionTime permissionTime,string personalId,string typeOfPermissionId,string? companyId,TypeofPermission typeofPermission,Personal personal,Company? company) : base(id, name)
+    public Permission(PermissionDTO permissionDTO) : base(permissionDTO.Id, new(permissionDTO.Name))
     {
         rules = new();
-        rules.PersonalIdCanNotBeEmpty(personalId);
-        PersonalId = personalId;
-        rules.TypeofPermissionIdCanNotBeEmpty(typeOfPermissionId);
-        TypeofPermissionId= typeOfPermissionId;
-        CompanyId= companyId;
-        rules.PermissionTimeCanNotBeEmpty(permissionTime);
-        PermissionTime = permissionTime;
-        rules.PersonalCanNotBeEmpty(personal);
-        Personal = personal;
-        rules.TypeofPermissionCanNotBeEmpty(typeofPermission);
-        TypeofPermission= typeofPermission;
+        rules.PersonalIdCanNotBeEmpty(permissionDTO.PersonalId);
+        PersonalId = permissionDTO.PersonalId;
+        rules.TypeofPermissionIdCanNotBeEmpty(permissionDTO.TypeofPermissionId);
+        TypeofPermissionId= permissionDTO.TypeofPermissionId;
+        CompanyId= permissionDTO.CompanyId;
+        rules.PermissionTimeCanNotBeEmpty(new(permissionDTO.StartedDate,permissionDTO.FinishedDate,permissionDTO.DayCount));
+        PermissionTime = new(permissionDTO.StartedDate, permissionDTO.FinishedDate, permissionDTO.DayCount);
+        rules.PersonalCanNotBeEmpty(permissionDTO.Personal);
+        Personal = permissionDTO.Personal;
+        rules.TypeofPermissionCanNotBeEmpty(permissionDTO.TypeofPermission);
+        TypeofPermission= permissionDTO.TypeofPermission;
     }
     public PermissionTime PermissionTime { get;private set; }
     public string TypeofPermissionId { get; private set; }

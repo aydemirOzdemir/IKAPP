@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using IKAPP.Domain.Entities.AggregateModels.Roles.RoleDTOs;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,4 +10,9 @@ namespace IKAPP.Domain.Entities.AggregateModels.Roles;
 
 public  class Role:IdentityRole
 {
+    public Role(RoleDTO roleDTO)
+    {
+        Name = roleDTO.Name;
+    }
+
 }
