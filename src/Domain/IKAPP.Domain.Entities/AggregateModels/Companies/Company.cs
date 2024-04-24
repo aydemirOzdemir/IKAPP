@@ -1,4 +1,5 @@
 ﻿using IKAPP.Domain.Entities.AggregateModels.Advances;
+using IKAPP.Domain.Entities.AggregateModels.Companies.CompanyDTOs;
 using IKAPP.Domain.Entities.AggregateModels.Departments;
 using IKAPP.Domain.Entities.AggregateModels.Expenses;
 using IKAPP.Domain.Entities.AggregateModels.Permissions;
@@ -16,27 +17,26 @@ namespace IKAPP.Domain.Entities.AggregateModels.Companies;
 
 public  class Company:AuditableEntity,IAggregateRoot
 {
-    public Company(string id, Name name,string? mersisNo,string? vergiNo,string? vergiDairesi,string? logoPath,string? phone,string? adres,string? mail,int? calisanSayisi,DateTime? kurulusTarihi,DateTime? sozlesmeBaslangic, DateTime? sozlesmeBitis) : base(id, name)
+    public Company(CompanyDTO companyDTO) : base(companyDTO.Id, new(companyDTO.Name))
     {
         Personeller = new HashSet<Personal>();
         Departmanlar = new HashSet<DepartmentCompany>();
         Avanslar = new HashSet<Advance>();
         Harcamalar = new HashSet<Expense>();
         Izinler = new HashSet<Permission>();
-        Unvan = name;
-        MersisNo = mersisNo;
-        VergiNo = vergiNo;
-        VergiDairesi = vergiDairesi;
-        LogoPath = logoPath;
-        Phone = phone;
-        Adres = adres;
-        Mail = mail;
-        CalisanSayisi = calisanSayisi;
-        KurulusTarihi= kurulusTarihi;
-        SozlesmeBaslangic= sozlesmeBaslangic;
-        SozlesmeBitis= sozlesmeBitis;
+        MersisNo =companyDTO.MersisNo ;
+        VergiNo =companyDTO.VergiNo ;
+        VergiDairesi = companyDTO.VergiDairesi;
+        LogoPath = companyDTO.LogoPath;
+        Phone = companyDTO.Phone;
+        Adres = companyDTO.Adres;
+        Mail = companyDTO.Mail;
+        CalisanSayisi = companyDTO.CalisanSayisi;
+        KurulusTarihi= companyDTO.KurulusTarihi;
+        SozlesmeBaslangic= companyDTO.SozlesmeBaslangic;
+        SozlesmeBitis= companyDTO.SozlesmeBitis;
     }
-    public Name Unvan { get;private set; }
+
     public string? MersisNo { get; private set; }
     public string? VergiNo { get; private set; }
     public string? VergiDairesi { get; private set; }

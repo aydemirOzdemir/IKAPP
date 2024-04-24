@@ -1,4 +1,5 @@
 ﻿using IKAPP.Domain.Entities.AggregateModels.Personals;
+using IKAPP.Domain.Entities.AggregateModels.Vocations.VocationDTOs;
 using IKAPP.Domain.Entities.SeedWorks;
 using IKAPP.Domain.Entities.SeedWorks.Base;
 using IKAPP.Domain.SeedWorks.Base.Shared;
@@ -12,7 +13,7 @@ namespace IKAPP.Domain.Entities.AggregateModels.Vocations;
 
 public  class Vocation:AuditableEntity,IAggregateRoot
 {
-    public Vocation(string id, Name name) : base(id, name)
+    public Vocation(VocationDTO vocationDTO) : base(vocationDTO.Id,new( vocationDTO.Name))
     {
         Personeller = new HashSet<Personal>();
     }

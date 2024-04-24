@@ -11,7 +11,7 @@ public sealed record PersonalNames
 {
     private readonly PersonalRule rules;
 
-    public PersonalNames(string firstName,string? secondName,string lastName,string secondLastName)
+    public PersonalNames(string firstName,string? secondName,string lastName,string? secondLastName)
     {
         rules =new() ;
         rules.FirstNameCanNotBeEmpty(firstName) ;

@@ -1,4 +1,5 @@
 ﻿using IKAPP.Domain.Entities.AggregateModels.Companies;
+using IKAPP.Domain.Entities.AggregateModels.Departments.DepartmentDTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,19 +10,19 @@ namespace IKAPP.Domain.Entities.AggregateModels.Departments;
 
 public  class DepartmentCompany
 {
-    public DepartmentCompany(string id,string departmanId,string companyId,Department? department,Company? company)
+    public DepartmentCompany(DepartmentCompanyDTO departmentCompanyDTO)
     {
-        Id = id;
-        Department = department;
-        Company = company;
-        DepartmanId = departmanId;
-        CompanyId = companyId;
+        Id = departmentCompanyDTO.Id;
+        Department = departmentCompanyDTO.Department;
+        Company = departmentCompanyDTO.Company;
+        DepartmanId = departmentCompanyDTO.DepartmanId;
+        CompanyId = departmentCompanyDTO.CompanyId;
     }
-    public string Id { get; set; }
-    public string DepartmanId { get; set; }
-    public string CompanyId { get; set; }
+    public string Id { get; private set; }
+    public string DepartmanId { get; private set; }
+    public string CompanyId { get; private set; }
 
     //navigation properties
-    public virtual Department? Department { get; set; }//departman Entity
-    public virtual Company? Company { get; set; } //Şirket Entity
+    public virtual Department? Department { get; private set; }//departman Entity
+    public virtual Company? Company { get; private set; } //Şirket Entity
 }

@@ -1,4 +1,5 @@
 ﻿using IKAPP.Domain.Entities.AggregateModels.Permissions;
+using IKAPP.Domain.Entities.AggregateModels.TypeofPermissions.TypeofPermissionDTOs;
 using IKAPP.Domain.Entities.AggregateModels.TypeofPermissions.TypeofPermissionRules;
 using IKAPP.Domain.Entities.Enums;
 using IKAPP.Domain.Entities.SeedWorks;
@@ -16,14 +17,14 @@ public  class TypeofPermission:AuditableEntity,IAggregateRoot
 {
     private readonly TypeofPermissionRule rules;
 
-    public TypeofPermission(string id, Name name,byte duration,Gender gender) : base(id, name)
+    public TypeofPermission(TypeOfPermissionDTO typeOfPermissionDTO) : base(typeOfPermissionDTO.Id,new( typeOfPermissionDTO.Name))
     {
         Permissions = new HashSet<Permission>();
         rules = new();
-        rules.DurationCanNotBeEmpty(duration);
-        Duration = duration;
-        rules.GenderCanNotBeEmpty(gender);
-        Gender= gender;
+        rules.DurationCanNotBeEmpty(typeOfPermissionDTO.Duration);
+        Duration = typeOfPermissionDTO.Duration;
+        rules.GenderCanNotBeEmpty(typeOfPermissionDTO.Gender);
+        Gender= typeOfPermissionDTO.Gender;
     }
     public byte Duration { get; private set; }
     public Gender Gender { get; private set; }
