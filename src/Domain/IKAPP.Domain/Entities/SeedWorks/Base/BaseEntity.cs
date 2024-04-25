@@ -11,18 +11,16 @@ namespace IKAPP.Domain.Entities.SeedWorks.Base;
 
 public abstract class BaseEntity : IEntity, ICreateableEntity, IUpdateableEntity, IEquatable<BaseEntity>
 {
-    public BaseEntity(string id,Name name)
+    public BaseEntity(string id, Name name)
     {
         Id = id;
         Name = name;
-       
+
     }
-    public Name Name { get; private set; } 
-    public string CreatedBy { get; set; }
+    public Name Name { get;  set; }
     public DateTime CreatedDate { get; set; }
-    public string Id { get; init; }
+    public string Id { get; set; }
     public Status Status { get; set; }
-    public string ModifiedBy { get; set; }
     public DateTime ModifiedDate { get; set; }
 
     public bool Equals(BaseEntity? other)

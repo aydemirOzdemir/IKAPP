@@ -26,4 +26,17 @@ public  class Vocation:AuditableEntity,IAggregateRoot
         Id = this.Id,
         Name = this.Name.Value,
     };
+    public Task SoftDeleteVocation()
+    {
+        IsActive = false;
+        DeletedDate = DateTime.Now;
+        return Task.CompletedTask;
+    }
+    public Task UpdateVocation(VocationUpdateDTO vocationUpdateDTO)
+    {
+        Id=vocationUpdateDTO.Id;
+        Name = new(vocationUpdateDTO.Name);
+        ModifiedDate = DateTime.Now;
+        return Task.CompletedTask;
+    }
 }

@@ -12,7 +12,7 @@ public sealed record Name
     private readonly SharedRule rules;
 
     public string Value { get; private set; }
-    public Name(string value)
+    public Name(string? value)
     {
         rules = new();
         rules.NamespaceCanNotBeEmpty(value);

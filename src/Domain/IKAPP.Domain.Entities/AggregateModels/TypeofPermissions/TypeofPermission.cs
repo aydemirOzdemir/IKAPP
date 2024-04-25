@@ -38,6 +38,21 @@ public  class TypeofPermission:AuditableEntity,IAggregateRoot
         Duration = this.Duration,
         Gender = this.Gender,
     };
+    public Task SoftDeleteTypeOfPermission()
+    {
+        IsActive = false;
+        DeletedDate = DateTime.Now;
+        return Task.CompletedTask;
+    }
+    public Task UpdateTypeOfPermission(TypeOfPermissionUpdateDTO typeOfPermissionUpdateDTO)
+    {
+        Id=typeOfPermissionUpdateDTO.Id;
+        Name = new(typeOfPermissionUpdateDTO.Name);
+        Duration = typeOfPermissionUpdateDTO.Duration;
+        Gender = typeOfPermissionUpdateDTO.Gender;
+        ModifiedDate = DateTime.Now;
+        return Task.CompletedTask;
+    }
 }
 
 

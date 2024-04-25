@@ -51,7 +51,7 @@ public class Advance : BaseEntityForBusiness, IAggregateRoot
 
     public static Advance CreateAdvance(AdvanceDTO advanceDTO) => new(advanceDTO) { CreatedDate = DateTime.Now };
 
-    public AdvanceDTO CreateAdvanceDTO() => new AdvanceDTO()
+    public  AdvanceDTO CreateAdvanceDTO() => new AdvanceDTO()
     {
         Id = this.Id,
         RequestDate = this.RequestDate,
@@ -66,9 +66,25 @@ public class Advance : BaseEntityForBusiness, IAggregateRoot
         CompanyId = this.CompanyId,
         Personal = this.Personal,
         Company = this.Company,
+        
     };
 
-
+    public  Task UpdateAdvance(AdvanceUpdateDTO advanceUpdateDTO)
+    {
+        Id= advanceUpdateDTO.Id;
+        TotalAmount=new(advanceUpdateDTO.TotalAmount);
+        Currency = advanceUpdateDTO.Currency;
+        TypeofAdvance= advanceUpdateDTO.TypeofAdvance;
+        Description = advanceUpdateDTO.Description;
+        ModifiedDate=DateTime.Now;
+        return Task.CompletedTask;
+    }
+    public Task SoftDeleteAdvance()
+    {
+        IsActive = false;
+        DeletedDate = DateTime.Now;
+        return Task.CompletedTask;
+    }
 }
 
 

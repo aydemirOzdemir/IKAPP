@@ -8,6 +8,6 @@ namespace IKAPP.Domain.Entities.Interfaces;
 
 public interface ICreateableEntity
 {
-    string CreatedBy { get; set; }
+
    DateTime CreatedDate { get; set; }
 }

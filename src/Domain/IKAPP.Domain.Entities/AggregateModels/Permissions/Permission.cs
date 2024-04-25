@@ -64,6 +64,21 @@ public class Permission : BaseEntityForBusiness, IAggregateRoot
         Company = this.Company,
 
     };
+    public Task SoftDeletePermission()
+    {
+        IsActive = false;
+        DeletedDate = DateTime.Now;
+        return Task.CompletedTask;
+    }
+    public Task UpdatePermission(PermissionUpdateDTO permissionUpdateDTO)
+    {
+        Id = permissionUpdateDTO.Id;
+        PermissionTime = new(permissionUpdateDTO.StartedDate,permissionUpdateDTO.FinishedDate,permissionUpdateDTO.DayCount);
+        TypeofPermissionId= permissionUpdateDTO.TypeofPermissionId;
+        TypeofPermission = TypeofPermission;
+        ModifiedDate=DateTime.Now;
+        return  Task.CompletedTask;
+    }
 
 
 }

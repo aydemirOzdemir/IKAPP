@@ -78,12 +78,10 @@ public  class Personal:IdentityUser,IAggregateRoot
     public decimal? UsedAdvance { get; private set; }
     public int? NumberofAdvance { get; private set; }
     public DateTime? AdvanceRenewalDate { get; private set; }
-    public string CreatedBy { get; private set; }
     public DateTime CreatedDate { get; private set; }
-    public string ModifiedBy { get; private set; }
     public DateTime ModifiedDate { get; private set; }
-    public string? DeletedBy { get; private set; }
     public DateTime? DeletedDate { get; private set; }
+    public bool IsActive { get; private set; } = true;
     //Navigation properties
 
     public  Department Department { get; private set; }//departman Entity
@@ -123,5 +121,19 @@ public  class Personal:IdentityUser,IAggregateRoot
         Vocation=this.Vocation,
 
     };
+    public Task SoftDeletePersonal()
+    {
+        IsActive = false;
+        DeletedDate = DateTime.Now;
+        return Task.CompletedTask;
+    }
+    public Task UpdatePersonal(PersonalUpdateDTO personalUpdateDTO)
+    {
+        Address = personalUpdateDTO.Address;
+        PicturePath = personalUpdateDTO.PicturePath;
+        PhoneNumber = personalUpdateDTO.PhoneNumber;
+        ModifiedDate = DateTime.Now;
+        return Task.CompletedTask;
+    }
 
 }
