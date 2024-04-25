@@ -57,8 +57,6 @@ public class Company : AuditableEntity, IAggregateRoot
 
     public static Company CreateCompany(CompanyDTO companyDTO) => new(companyDTO) { CreatedDate = DateTime.Now };
 
-
-
     public CompanyDTO CreateCompanyDTO() => new()
     {
         Id = this.Id,
@@ -75,9 +73,29 @@ public class Company : AuditableEntity, IAggregateRoot
         SozlesmeBaslangic = this.SozlesmeBaslangic,
         SozlesmeBitis = this.SozlesmeBitis,
     };
-
-
-
+    public Task UpdateCompany(CompanyUpdateDTO companyUpdateDTO)
+    {
+        Id = companyUpdateDTO.Id;
+        Name = new(companyUpdateDTO.Name);
+        MersisNo = companyUpdateDTO.MersisNo;
+        VergiDairesi = companyUpdateDTO.VergiDairesi;
+        Adres = companyUpdateDTO.Adres;
+        LogoPath = companyUpdateDTO.LogoPath;
+        Phone = companyUpdateDTO.Phone;
+        Mail = companyUpdateDTO.Mail;
+        CalisanSayisi = companyUpdateDTO.CalısanSayisi;
+        KurulusTarihi = companyUpdateDTO.KurulusTarihi;
+        SozlesmeBaslangic = companyUpdateDTO.SozlesmeBaslangic;
+        SozlesmeBitis = companyUpdateDTO.SozlesmeBitis;
+        ModifiedDate = DateTime.Now;
+        return Task.CompletedTask;
+    }
+    public Task SoftDeleteCompany()
+    {
+        IsActive = false;
+        DeletedDate = DateTime.Now;
+        return Task.CompletedTask;
+    }
 
 
 }

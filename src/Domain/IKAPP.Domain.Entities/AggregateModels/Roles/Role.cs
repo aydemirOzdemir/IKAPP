@@ -20,5 +20,10 @@ public  class Role:IdentityRole
         Id=this.Id,
         Name=this.Name
     };
+    public Task UpdateRole(string name)
+    {
+        Name = new(name);
+        return Task.CompletedTask;
+    }
 
 }

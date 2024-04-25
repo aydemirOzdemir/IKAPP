@@ -10,6 +10,6 @@ namespace IKAPP.Domain.Entities.Interfaces;
 
 public interface IEntity
 {
-    string Id { get; init; }
+    string Id { get; set; }
     Status Status { get; set; }
 }

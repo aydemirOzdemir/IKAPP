@@ -37,6 +37,13 @@ public class DepartmentCompany
         Department = this.Department,
         Company = this.Company
     };
+    public Task UpdateDepartmentCompany(DepartmentCompanyUpdateDTO departmentCompanyUpdateDTO)
+    {
+        Id = departmentCompanyUpdateDTO.Id;
+        CompanyId = departmentCompanyUpdateDTO.CompanyId;
+        DepartmanId = departmentCompanyUpdateDTO.DepartmanId;
+        return Task.CompletedTask;
+    }
 
 
 }

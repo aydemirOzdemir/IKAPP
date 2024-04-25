@@ -12,60 +12,60 @@ namespace IKAPP.Domain.Entities.AggregateModels.Advances.AdvanceRules;
 
 public class AdvanceRule:BaseRule
 {
-    public Task BeValidNumber(decimal value)
+    public void BeValidNumber(decimal value)
     {
         if (!decimal.TryParse(value.ToString(),out _))
         {
             throw new BeValidNumberException("Toplam Tutar Sadece Sayısal Değer İçermelidir.");
         }
-        return Task.CompletedTask;
+       
     }
-    public Task GreaterThan2000(decimal value)
+    public void GreaterThan2000(decimal value)
     {
         if (value<2000)
         {
             throw new GreaterThan2000Exception("Toplam Tutar 2000'den büyük olmalıdır.");
         }
-        return Task.CompletedTask;
+       
     }
-    public Task TotalAmountCanNotBeEmpty(decimal value)
+    public void TotalAmountCanNotBeEmpty(decimal? value)
     {
         if (value == null)
         {
             throw new TotalAmountCanNotBeEmptyException("Toplam Tutar Alanı Boş Bırakılamaz");
         }
-        return Task.CompletedTask;
+     
     }
-    public Task CurrencyCanNotBeEmpty(Currency value)
+    public void CurrencyCanNotBeEmpty(Currency? value)
     {
         if (value == null)
         {
             throw new CurrencyCanNotBeEmptyException("Para Birimi Alanı Boş Bırakılamaz");
         }
-        return Task.CompletedTask;
+   
     }
-    public Task DescriptionCanNotBeEmpty(string value)
+    public void DescriptionCanNotBeEmpty(string? value)
     {
         if (value == null)
         {
             throw new DescriptionCanNotBeEmptyException("Açıklama Alanı Boş Bırakılamaz");
         }
-        return Task.CompletedTask;
+      
     }
-    public Task TypeofAdvanceCanNotBeEmpty(TypeofAdvance value)
+    public void TypeofAdvanceCanNotBeEmpty(TypeofAdvance? value)
     {
         if (value == null)
         {
             throw new TypeofAdvanceCanNotBeEmptyException("Avans Tipi Alanı Boş Bırakılamaz");
         }
-        return Task.CompletedTask;
+        
     }
-    public Task PersonalIdCanNotBeEmpty(string value)
+    public void PersonalIdCanNotBeEmpty(string? value)
     {
         if (value == null)
         {
             throw new PersonalIdCanNotBeEmptyException("Personel Kimliği Alanı Boş Bırakılamaz");
         }
-        return Task.CompletedTask;
+        
     }
 }

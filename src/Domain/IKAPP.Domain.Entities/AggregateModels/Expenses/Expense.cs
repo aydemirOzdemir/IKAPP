@@ -66,6 +66,21 @@ public class Expense : BaseEntityForBusiness, IAggregateRoot
         Company = this.Company,
     };
 
+    public Task SoftDeleteExpense()
+    {
+        IsActive = false;
+        DeletedDate = DateTime.Now;
+        return Task.CompletedTask;
+    }
+    public Task UpdateExpense(ExpenseUpdateDTO expenseUpdateDTO)
+    {
+        Id=expenseUpdateDTO.Id;
+        TotalAmount = new(expenseUpdateDTO.TotalAmount);
+        Currency = expenseUpdateDTO.Currency;
+        TypeofExpense=expenseUpdateDTO.TypeofExpenses;
+        Documantation = expenseUpdateDTO.Documantation;
+        ModifiedDate=DateTime.Now;
+        return Task.CompletedTask;
+    }
 
 }
-

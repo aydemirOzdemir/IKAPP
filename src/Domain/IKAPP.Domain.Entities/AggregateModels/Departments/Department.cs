@@ -31,5 +31,18 @@ public class Department : AuditableEntity, IAggregateRoot
         Id = this.Id,
         Name = this.Name.Value,
     };
+    public Task SoftDeleteDepartment()
+    {
+        IsActive = false;
+        DeletedDate = DateTime.Now;
+        return Task.CompletedTask;
+    }
+    public Task UpdateDepartment(DepartmentUpdateDTO departmentUpdateDTO)
+    {
+        Id = departmentUpdateDTO.Id;
+        Name=new(departmentUpdateDTO.Name);
+        ModifiedDate = DateTime.Now;
+        return Task.CompletedTask;
+    }
 
 }
