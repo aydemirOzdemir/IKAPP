@@ -53,6 +53,15 @@ public  class TypeofPermission:AuditableEntity,IAggregateRoot
         ModifiedDate = DateTime.Now;
         return Task.CompletedTask;
     }
+    public Task AddPermissions(List<Permission> permissions)
+    {
+        foreach (Permission permission in permissions)
+        {
+            Permissions.Add(permission);
+        }
+
+        return Task.CompletedTask;
+    }
 }
 
 

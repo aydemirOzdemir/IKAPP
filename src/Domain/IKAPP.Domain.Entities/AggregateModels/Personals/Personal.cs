@@ -135,5 +135,32 @@ public  class Personal:IdentityUser,IAggregateRoot
         ModifiedDate = DateTime.Now;
         return Task.CompletedTask;
     }
+    public Task AddAdvances(List<Advance> advances)
+    {
+        foreach (Advance advance in advances)
+        {
+            Advances.Add(advance);
+        }
+
+        return Task.CompletedTask;
+    }
+    public Task AddExpenses(List<Expense> expenses)
+    {
+        foreach (Expense expense in expenses)
+        {
+            Expenses.Add(expense);
+        }
+
+        return Task.CompletedTask;
+    }
+    public Task AddPermissions(List<Permission> permissions)
+    {
+        foreach (Permission permission in permissions)
+        {
+            Permissions.Add(permission);
+        }
+
+        return Task.CompletedTask;
+    }
 
 }

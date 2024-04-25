@@ -18,11 +18,11 @@ public class Department : AuditableEntity, IAggregateRoot
     private Department(DepartmentDTO departmentDTO) : base(departmentDTO.Id, new(departmentDTO.Name))
     {
         Personeller = new HashSet<Personal>();
-        Şiketler = new HashSet<DepartmentCompany>();
+        Siketler = new HashSet<DepartmentCompany>();
     }
     //navigation properties
     public ICollection<Personal>? Personeller { get; private set; }
-    public ICollection<DepartmentCompany>? Şiketler { get; private set; }
+    public ICollection<DepartmentCompany>? Siketler { get; private set; }
 
     public Department CreateDepartment(DepartmentDTO departmentDTO) => new(departmentDTO) { CreatedDate = DateTime.Now };
 
@@ -42,6 +42,24 @@ public class Department : AuditableEntity, IAggregateRoot
         Id = departmentUpdateDTO.Id;
         Name=new(departmentUpdateDTO.Name);
         ModifiedDate = DateTime.Now;
+        return Task.CompletedTask;
+    }
+    public Task AddPersonals(List<Personal> personals)
+    {
+        foreach (Personal personal in personals)
+        {
+            Personeller.Add(personal);
+        }
+
+        return Task.CompletedTask;
+    }
+    public Task AddCompanies(List<DepartmentCompany> companies)
+    {
+        foreach (DepartmentCompany company in companies)
+        {
+            Siketler.Add(company);
+        }
+
         return Task.CompletedTask;
     }
 

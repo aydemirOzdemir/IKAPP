@@ -96,7 +96,51 @@ public class Company : AuditableEntity, IAggregateRoot
         DeletedDate = DateTime.Now;
         return Task.CompletedTask;
     }
+    public Task AddPersonals(List<Personal> personals)
+    {
+        foreach (Personal personal in personals)
+        {
+            Personeller.Add(personal);
+        }
 
+        return Task.CompletedTask;
+    }
+    public Task AddDepartments(List<DepartmentCompany> departments)
+    {
+        foreach (DepartmentCompany department in departments)
+        {
+            Departmanlar.Add(department);
+        }
+
+        return Task.CompletedTask;
+    }
+    public Task AddAdvances(List<Advance> advances)
+    {
+        foreach (Advance advance in advances)
+        {
+            Avanslar.Add(advance);
+        }
+
+        return Task.CompletedTask;
+    }
+    public Task AddExpenses(List<Expense> expenses)
+    {
+        foreach (Expense expense in expenses)
+        {
+            Harcamalar.Add(expense);
+        }
+
+        return Task.CompletedTask;
+    }
+    public Task AddPermissions(List<Permission> permissions)
+    {
+        foreach (Permission permission in permissions)
+        {
+            Izinler.Add(permission);
+        }
+
+        return Task.CompletedTask;
+    }
 
 }
 
