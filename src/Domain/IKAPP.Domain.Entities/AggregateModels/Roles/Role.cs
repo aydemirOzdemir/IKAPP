@@ -14,5 +14,11 @@ public  class Role:IdentityRole
     {
         Name = roleDTO.Name;
     }
+    public static Role CreateRole(RoleDTO roleDTO)=> new Role(roleDTO);
+    public  RoleDTO CreateRoleDTO()=> new RoleDTO()
+    {
+        Id=this.Id,
+        Name=this.Name
+    };
 
 }

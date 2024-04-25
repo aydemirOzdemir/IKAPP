@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace IKAPP.Domain.Entities.AggregateModels.Departments;
 
-public  class DepartmentCompany
+public class DepartmentCompany
 {
-    public DepartmentCompany(DepartmentCompanyDTO departmentCompanyDTO)
+    private DepartmentCompany(DepartmentCompanyDTO departmentCompanyDTO)
     {
         Id = departmentCompanyDTO.Id;
         Department = departmentCompanyDTO.Department;
@@ -25,4 +25,18 @@ public  class DepartmentCompany
     //navigation properties
     public virtual Department? Department { get; private set; }//departman Entity
     public virtual Company? Company { get; private set; } //Şirket Entity
+
+    public static DepartmentCompany CreateDepartmentCompany(DepartmentCompanyDTO departmentCompanyDTO) => new(departmentCompanyDTO);
+
+
+    public DepartmentCompanyDTO CreateDepartmentCompanyDTO() => new()
+    {
+        Id = this.Id,
+        DepartmanId = this.DepartmanId,
+        CompanyId = this.CompanyId,
+        Department = this.Department,
+        Company = this.Company
+    };
+
+
 }

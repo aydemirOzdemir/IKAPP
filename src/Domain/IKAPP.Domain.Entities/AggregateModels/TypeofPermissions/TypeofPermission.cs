@@ -29,4 +29,15 @@ public  class TypeofPermission:AuditableEntity,IAggregateRoot
     public byte Duration { get; private set; }
     public Gender Gender { get; private set; }
     public ICollection<Permission> Permissions { get;private set; }
+
+    public static TypeofPermission CreateTypeOfPermission(TypeOfPermissionDTO typeOfPermissionDTO) => new(typeOfPermissionDTO) { CreatedDate=DateTime.Now };
+    public TypeOfPermissionDTO CreateTypeOfPermissionDTO() => new()
+    {
+        Id = this.Id,
+        Name = this.Name.Value,
+        Duration = this.Duration,
+        Gender = this.Gender,
+    };
 }
+
+

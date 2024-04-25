@@ -19,4 +19,11 @@ public  class Vocation:AuditableEntity,IAggregateRoot
     }
     //navigation properties
     public ICollection<Personal>? Personeller { get; private set; }
+
+    public static Vocation CreateVocation(VocationDTO vocationDTO) => new(vocationDTO) { CreatedDate = DateTime.Now };
+    public VocationDTO CreateVocationDTO() => new()
+    {
+        Id = this.Id,
+        Name = this.Name.Value,
+    };
 }

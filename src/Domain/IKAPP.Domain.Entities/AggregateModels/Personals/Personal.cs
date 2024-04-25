@@ -84,11 +84,6 @@ public  class Personal:IdentityUser,IAggregateRoot
     public DateTime ModifiedDate { get; private set; }
     public string? DeletedBy { get; private set; }
     public DateTime? DeletedDate { get; private set; }
-
-
-
-
-
     //Navigation properties
 
     public  Department Department { get; private set; }//departman Entity
@@ -97,4 +92,36 @@ public  class Personal:IdentityUser,IAggregateRoot
     public  ICollection<Advance> Advances { get; private set; } //Şirket Entity
     public  ICollection<Expense> Expenses { get; private set; } //Şirket Entity
     public  ICollection<Permission> Permissions { get; private set; } //Şirket Entity
+
+    public static Personal CreatePersonal(PersonalDTO personalDTO)=> new Personal(personalDTO) { CreatedDate=DateTime.Now};
+    public PersonalDTO CreatePersonalDTO()=>new PersonalDTO
+    {
+        Id=this.Id,
+        Email=this.Email,
+        PhoneNumber=this.PhoneNumber,
+        FirstName=this.PersonalNames.FirstName,
+        SecondName=this.PersonalNames.SecondName,
+        LastName=this.PersonalNames.LastName,
+        SecondLastName=this.PersonalNames.SecondLastName,
+        TCIdentityNumber=this.TCIdentityNumber.Value,
+        StartDateOfWork=this.StartDateOfWork,
+        FinishDateOfWork=this.FinishDateOfWork,
+        BirthDate=this.BirthDate.Value,
+        Salary=this.Salary,
+        Address=this.Address,
+        Gender=this.Gender,
+        PlaceOfBirth=this.PlaceOfBirth,
+        PicturePath=this.PicturePath,
+        VocationId=this.VocationId,
+        CompanyId=this.CompanyId,
+        DepartmanId=this.DepartmanId,
+        UsedAdvance=this.UsedAdvance,
+        NumberofAdvance=this.NumberofAdvance,
+        AdvanceRenewalDate=this.AdvanceRenewalDate,
+        Department=this.Department,
+        Company=this.Company,
+        Vocation=this.Vocation,
+
+    };
+
 }

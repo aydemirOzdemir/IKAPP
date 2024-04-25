@@ -23,10 +23,10 @@ public class PermissionDTO
     public DateTime DateofReply { get; init; }
     public Approval StatusofApproval { get; init; }
   
-    public string TypeofPermissionId { get; private set; }
-    public string PersonalId { get; private set; }
-    public string? CompanyId { get; private set; }
-    public TypeofPermission TypeofPermission { get; private set; }
-    public Personal Personal { get; private set; }
-    public Company? Company { get; private set; }
+    public string TypeofPermissionId { get;  init; }
+    public string PersonalId { get;  init; }
+    public string? CompanyId { get;  init; }
+    public TypeofPermission TypeofPermission { get;  init; }
+    public Personal Personal { get;  init; }
+    public Company? Company { get;  init; }
 }

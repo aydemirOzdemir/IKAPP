@@ -13,7 +13,7 @@ namespace IKAPP.Domain.Entities.AggregateModels.Personals.PersonalDTOs;
 
 public sealed record PersonalDTO
 {
-   
+    public string? Id { get; init; }
     public string Email { get; init; }
     public string PhoneNumber { get; init; }
     public string FirstName { get;  set; }
