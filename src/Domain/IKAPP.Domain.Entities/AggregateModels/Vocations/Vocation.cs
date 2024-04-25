@@ -39,4 +39,13 @@ public  class Vocation:AuditableEntity,IAggregateRoot
         ModifiedDate = DateTime.Now;
         return Task.CompletedTask;
     }
+    public Task AddPersonals(List<Personal> personals)
+    {
+        foreach (Personal personal in personals)
+        {
+            Personeller.Add(personal);
+        }
+
+        return Task.CompletedTask;
+    }
 }
