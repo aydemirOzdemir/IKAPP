@@ -9,8 +9,8 @@ namespace IKAPP.Domain.Entities.AggregateModels.TypeofPermissions.TypeofPermissi
 
 public sealed record TypeOfPermissionUpdateDTO
 {
-    public string Id { get; set; }
+    public string Id { get; set; } = null!;
     public string Name { get; set; } = default!;
-    public byte Duration { get; set; }
-    public Gender Gender { get; set; }
+    public byte Duration { get; set; } = default!;
+    public Gender Gender { get; set; } = default!;
 }

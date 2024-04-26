@@ -9,12 +9,12 @@ namespace IKAPP.Domain.Entities.AggregateModels.Permissions.PermissionDTOs;
 
 public sealed record PermissionUpdateDTO
 {
-    public string Id { get; set; }
+    public string Id { get; set; } = null!;
 
-    public DateTime StartedDate { get; set; }
-    public DateTime FinishedDate { get; init; }
-    public byte DayCount { get; init; }
+    public DateTime StartedDate { get; set; } = default!;
+    public DateTime FinishedDate { get; init; } = default!;
+    public byte DayCount { get; init; } = default!;
 
-    public string TypeofPermissionId { get; set; }
-    public TypeofPermission TypeofPermission { get; set; }
+    public string TypeofPermissionId { get; set; } = default!;
+    public TypeofPermission TypeofPermission { get; set; } = null!;
 }

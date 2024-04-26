@@ -9,9 +9,9 @@ namespace IKAPP.Domain.Entities.AggregateModels.Departments.DepartmentDTOs;
 
 public sealed record DepartmentCompanyDTO
 {
-    public string Id { get; init; }
-    public string DepartmanId { get; init; }
-    public string CompanyId { get; init; }
+    public string Id { get; init; } = null!;
+    public string DepartmanId { get; init; }=null!;
+    public string CompanyId { get; init; } = null!;
 
     //navigation properties
     public  Department? Department { get; init; }//departman Entity

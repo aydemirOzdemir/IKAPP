@@ -13,25 +13,25 @@ namespace IKAPP.Domain.Entities.AggregateModels.Personals.PersonalDTOs;
 
 public sealed record PersonalDTO
 {
-    public string? Id { get; init; }
-    public string Email { get; init; }
-    public string PhoneNumber { get; init; }
-    public string FirstName { get;  set; }
+    public string? Id { get; init; } = null!;
+    public string Email { get; init; } = null!;
+    public string PhoneNumber { get; init; } 
+    public string FirstName { get;  set; } = null!;
     public string? SecondName { get;  set; }
-    public string LastName { get;  set; }
+    public string LastName { get;  set; } = null!;
     public string? SecondLastName { get;  set; }
-    public string TCIdentityNumber { get; init; }
-    public DateTime StartDateOfWork { get; init; }
+    public string TCIdentityNumber { get; init; } = null!;
+    public DateTime StartDateOfWork { get; init; } = default!;
     public DateTime? FinishDateOfWork { get; init; }
-    public DateTime BirthDate { get; init; }
+    public DateTime BirthDate { get; init; } = default!;
     public decimal? Salary { get; init; }
-    public string Address { get; init; }
-    public Gender Gender { get; init; }
-    public string PlaceOfBirth { get; init; }
+    public string Address { get; init; } = null!;
+    public Gender Gender { get; init; } = default!;
+    public string PlaceOfBirth { get; init; } = null!;
     public string? PicturePath { get; init; }
-    public string VocationId { get; init; }
-    public string CompanyId { get; init; }
-    public string DepartmanId { get; init; }
+    public string VocationId { get; init; } = null!;
+    public string CompanyId { get; init; } = null!;
+    public string DepartmanId { get; init; } = null!;
     public decimal? UsedAdvance { get; init; }
     public int? NumberofAdvance { get; init; }
     public DateTime? AdvanceRenewalDate { get; init; }

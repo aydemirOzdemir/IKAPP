@@ -8,6 +8,6 @@ namespace IKAPP.Domain.Entities.AggregateModels.Roles.RoleDTOs;
 
 public sealed record RoleDTO
 {
-    public string? Id { get; init; }
-    public string Name { get; init; }
+    public string Id { get; init; } = null!;
+    public string Name { get; init; } = null!;
 }

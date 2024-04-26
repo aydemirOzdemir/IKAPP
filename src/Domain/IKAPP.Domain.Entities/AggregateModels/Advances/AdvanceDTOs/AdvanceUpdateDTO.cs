@@ -10,8 +10,8 @@ namespace IKAPP.Domain.Entities.AggregateModels.Advances.AdvanceDTOs;
 public sealed record AdvanceUpdateDTO
 {
     public string Id { get; set; }
-    public decimal TotalAmount { get; init; }
-    public Currency Currency { get; init; }
-    public TypeofAdvance TypeofAdvance { get; init; }
-    public string Description { get; init; }
+    public decimal TotalAmount { get; init; } = default!;
+    public Currency Currency { get; init; } = default!;
+    public TypeofAdvance TypeofAdvance { get; init; } = default!;
+    public string Description { get; init; } = default!;
 }

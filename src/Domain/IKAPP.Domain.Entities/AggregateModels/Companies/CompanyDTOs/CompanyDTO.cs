@@ -10,8 +10,8 @@ namespace IKAPP.Domain.Entities.AggregateModels.Companies.CompanyDTOs;
 
 public sealed record CompanyDTO
 {
-    public string Name { get;  init; }
-    public string Id { get; init; }
+    public string Name { get; init; } = null!;
+    public string Id { get; init; } = null!;
     public string? MersisNo { get; init; }
     public string? VergiNo { get; init; }
     public string? VergiDairesi { get; init; }
