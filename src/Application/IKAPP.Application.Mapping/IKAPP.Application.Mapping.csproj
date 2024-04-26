@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\IKAPP.Application.Dtos\IKAPP.Application.Dtos.csproj" />
+  </ItemGroup>
+
 </Project>

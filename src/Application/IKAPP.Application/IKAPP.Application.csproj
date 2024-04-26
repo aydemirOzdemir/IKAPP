@@ -10,4 +10,8 @@
     <Folder Include="Features\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\IKAPP.Application.Mapping\IKAPP.Application.Mapping.csproj" />
+  </ItemGroup>
+
 </Project>
