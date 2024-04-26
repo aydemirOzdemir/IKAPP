@@ -12,7 +12,6 @@ public abstract class AuditableEntity : BaseEntity, ISoftDeleteEntity
 {
     public AuditableEntity(string id,Name name) : base(id,name) { }
 
-   
     public DateTime? DeletedDate { get; set; }
     public bool IsActive { get; set; } = true;
 }
