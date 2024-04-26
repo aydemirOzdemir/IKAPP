@@ -23,6 +23,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKAPP.Application", "src\Application\IKAPP.Application\IKAPP.Application.csproj", "{261989AA-952A-406C-AFB4-F0159834CBBF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKAPP.Persistance.Concrete", "src\Infrastructure\IKAPP.Persistance.Concrete\IKAPP.Persistance.Concrete.csproj", "{4D712C03-D6BC-4AD3-B755-3F58A31B73A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKAPP.Persistance.Configuration", "src\Infrastructure\IKAPP.Persistance.Configuration\IKAPP.Persistance.Configuration.csproj", "{73CB66C1-CE13-4850-BFF2-74D50067479A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKAPP.Application.Validation", "src\Application\IKAPP.Application.Validation\IKAPP.Application.Validation.csproj", "{24C2478C-57F3-408E-8247-F58916C9FD81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKAPP.Application.Mapping", "src\Application\IKAPP.Application.Mapping\IKAPP.Application.Mapping.csproj", "{934108CA-3461-40E3-95F9-3F5E34F67ECF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +57,22 @@ Global
 		{261989AA-952A-406C-AFB4-F0159834CBBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{261989AA-952A-406C-AFB4-F0159834CBBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{261989AA-952A-406C-AFB4-F0159834CBBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D712C03-D6BC-4AD3-B755-3F58A31B73A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D712C03-D6BC-4AD3-B755-3F58A31B73A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D712C03-D6BC-4AD3-B755-3F58A31B73A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D712C03-D6BC-4AD3-B755-3F58A31B73A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73CB66C1-CE13-4850-BFF2-74D50067479A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73CB66C1-CE13-4850-BFF2-74D50067479A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73CB66C1-CE13-4850-BFF2-74D50067479A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73CB66C1-CE13-4850-BFF2-74D50067479A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24C2478C-57F3-408E-8247-F58916C9FD81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24C2478C-57F3-408E-8247-F58916C9FD81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24C2478C-57F3-408E-8247-F58916C9FD81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24C2478C-57F3-408E-8247-F58916C9FD81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{934108CA-3461-40E3-95F9-3F5E34F67ECF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{934108CA-3461-40E3-95F9-3F5E34F67ECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{934108CA-3461-40E3-95F9-3F5E34F67ECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{934108CA-3461-40E3-95F9-3F5E34F67ECF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +87,10 @@ Global
 		{DFF5A6A2-09C4-40A2-9ACE-16B606380C69} = {85BC51F2-A3EF-4880-9344-177833C28CA5}
 		{31BB4FD6-1D3C-4F2A-A6E0-C935D21D4200} = {05BDB679-AC5A-4930-99BF-DE0AE5B03278}
 		{261989AA-952A-406C-AFB4-F0159834CBBF} = {31BB4FD6-1D3C-4F2A-A6E0-C935D21D4200}
+		{4D712C03-D6BC-4AD3-B755-3F58A31B73A0} = {A92736CE-4146-454A-BD4B-ADA574F8E4AB}
+		{73CB66C1-CE13-4850-BFF2-74D50067479A} = {A92736CE-4146-454A-BD4B-ADA574F8E4AB}
+		{24C2478C-57F3-408E-8247-F58916C9FD81} = {31BB4FD6-1D3C-4F2A-A6E0-C935D21D4200}
+		{934108CA-3461-40E3-95F9-3F5E34F67ECF} = {31BB4FD6-1D3C-4F2A-A6E0-C935D21D4200}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9E557A61-8166-4A68-BBFD-07AF541333B2}

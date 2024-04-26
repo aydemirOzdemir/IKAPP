@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IKAPP.Persistance.Configuration\IKAPP.Persistance.Configuration.csproj" />
+    <ProjectReference Include="..\IKAPP.Persistance\IKAPP.Persistance.csproj" />
   </ItemGroup>
 
 </Project>
