@@ -19,6 +19,7 @@ namespace IKAPP.Domain.Entities.AggregateModels.Advances;
 public class Advance : BaseEntityForBusiness, IAggregateRoot
 {
     private readonly AdvanceRule rules;
+ 
     private Advance(AdvanceDTO advanceDTO) : base(advanceDTO.Id, new(advanceDTO.Name))
     {
         rules = new();
