@@ -94,7 +94,7 @@ public class Company : AuditableEntity, IAggregateRoot
     }
     public Task SoftDeleteCompany()
     {
-        IsActive = false;
+      
         DeletedDate = DateTime.Now;
         Status= Status.Deleted;
         return Task.CompletedTask;

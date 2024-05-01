@@ -8,6 +8,5 @@ namespace IKAPP.Domain.Entities.Interfaces;
 
 public interface ISoftDeleteEntity
 {
-    bool IsActive { get; set; }
     DateTime? DeletedDate { get; set; }
 }

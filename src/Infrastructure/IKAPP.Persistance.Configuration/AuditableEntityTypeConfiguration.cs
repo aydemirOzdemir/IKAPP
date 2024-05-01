@@ -15,6 +15,5 @@ public class AuditableEntityTypeConfiguration<TEntity> : BaseEntityConfiguration
     {
         base.Configure(builder);
         builder.Property(x => x.DeletedDate).IsRequired();
-        builder.HasQueryFilter(e => EF.Property<bool>(e, "IsActive"));
     }
 }

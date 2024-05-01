@@ -40,7 +40,7 @@ public  class TypeofPermission:AuditableEntity,IAggregateRoot
     };
     public Task SoftDeleteTypeOfPermission()
     {
-        IsActive = false;
+
         DeletedDate = DateTime.Now;
         Status= Status.Deleted;
         return Task.CompletedTask;
