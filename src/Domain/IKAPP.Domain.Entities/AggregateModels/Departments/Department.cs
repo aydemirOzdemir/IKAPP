@@ -18,7 +18,7 @@ public class Department : AuditableEntity, IAggregateRoot
     private Department(DepartmentDTO departmentDTO) : base(departmentDTO.Id, new(departmentDTO.Name))
     {
         Personeller = new HashSet<Personal>();
-        Siketler = new HashSet<DepartmentCompany>();
+        Sirketler = new HashSet<DepartmentCompany>();
     }
     //navigation properties
     public ICollection<Personal>? Personeller { get; private set; }
@@ -59,7 +59,7 @@ public class Department : AuditableEntity, IAggregateRoot
     {
         foreach (DepartmentCompany company in companies)
         {
-            Siketler.Add(company);
+            Sirketler.Add(company);
         }
 
         return Task.CompletedTask;
