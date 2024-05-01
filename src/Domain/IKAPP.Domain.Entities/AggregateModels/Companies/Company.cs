@@ -4,6 +4,7 @@ using IKAPP.Domain.Entities.AggregateModels.Departments;
 using IKAPP.Domain.Entities.AggregateModels.Expenses;
 using IKAPP.Domain.Entities.AggregateModels.Permissions;
 using IKAPP.Domain.Entities.AggregateModels.Personals;
+using IKAPP.Domain.Entities.Enums;
 using IKAPP.Domain.Entities.SeedWorks;
 using IKAPP.Domain.Entities.SeedWorks.Base;
 using IKAPP.Domain.SeedWorks.Base.Shared;
@@ -55,7 +56,7 @@ public class Company : AuditableEntity, IAggregateRoot
     public ICollection<Expense>? Harcamalar { get; private set; }
     public ICollection<Permission>? Izinler { get; private set; }
 
-    public static Company CreateCompany(CompanyDTO companyDTO) => new(companyDTO) { CreatedDate = DateTime.Now };
+    public static Company CreateCompany(CompanyDTO companyDTO) => new(companyDTO) { CreatedDate = DateTime.Now,Status=Status.Added };
 
     public CompanyDTO CreateCompanyDTO() => new()
     {
@@ -88,12 +89,14 @@ public class Company : AuditableEntity, IAggregateRoot
         SozlesmeBaslangic = companyUpdateDTO.SozlesmeBaslangic;
         SozlesmeBitis = companyUpdateDTO.SozlesmeBitis;
         ModifiedDate = DateTime.Now;
+        Status = Status.Modified;
         return Task.CompletedTask;
     }
     public Task SoftDeleteCompany()
     {
         IsActive = false;
         DeletedDate = DateTime.Now;
+        Status= Status.Deleted;
         return Task.CompletedTask;
     }
     public Task AddPersonals(List<Personal> personals)

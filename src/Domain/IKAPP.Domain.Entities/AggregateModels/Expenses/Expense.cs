@@ -48,7 +48,7 @@ public class Expense : BaseEntityForBusiness, IAggregateRoot
     public string? CompanyId { get; private set; }
     public Personal Personal { get; private set; }
     public Company? Company { get; private set; }
-    public static Expense CreateExpense(ExpenseDTO expenseDTO) => new(expenseDTO) { CreatedDate = DateTime.Now };
+    public static Expense CreateExpense(ExpenseDTO expenseDTO) => new(expenseDTO) { CreatedDate = DateTime.Now,Status=Status.Added };
 
     public ExpenseDTO CreateExpenseDTO() => new()
     {
@@ -70,6 +70,7 @@ public class Expense : BaseEntityForBusiness, IAggregateRoot
     {
         IsActive = false;
         DeletedDate = DateTime.Now;
+        Status = Status.Deleted;
         return Task.CompletedTask;
     }
     public Task UpdateExpense(ExpenseUpdateDTO expenseUpdateDTO)
@@ -80,6 +81,7 @@ public class Expense : BaseEntityForBusiness, IAggregateRoot
         TypeofExpense=expenseUpdateDTO.TypeofExpenses;
         Documantation = expenseUpdateDTO.Documantation;
         ModifiedDate=DateTime.Now;
+        Status = Status.Modified;
         return Task.CompletedTask;
     }
 

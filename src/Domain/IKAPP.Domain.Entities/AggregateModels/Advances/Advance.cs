@@ -50,7 +50,7 @@ public class Advance : BaseEntityForBusiness, IAggregateRoot
     public Personal Personal { get; private set; }
     public Company? Company { get; private set; }
 
-    public static Advance CreateAdvance(AdvanceDTO advanceDTO) => new(advanceDTO) { CreatedDate = DateTime.Now };
+    public static Advance CreateAdvance(AdvanceDTO advanceDTO) => new(advanceDTO) { CreatedDate = DateTime.Now,Status=Status.Added };
 
     public  AdvanceDTO CreateAdvanceDTO() => new AdvanceDTO()
     {
@@ -78,12 +78,14 @@ public class Advance : BaseEntityForBusiness, IAggregateRoot
         TypeofAdvance= advanceUpdateDTO.TypeofAdvance;
         Description = advanceUpdateDTO.Description;
         ModifiedDate=DateTime.Now;
+        Status=Status.Modified;
         return Task.CompletedTask;
     }
     public Task SoftDeleteAdvance()
     {
         IsActive = false;
         DeletedDate = DateTime.Now;
+        Status = Status.Deleted;
         return Task.CompletedTask;
     }
 }

@@ -91,7 +91,7 @@ public  class Personal:IdentityUser,IAggregateRoot
     public  ICollection<Expense> Expenses { get; private set; } //Şirket Entity
     public  ICollection<Permission> Permissions { get; private set; } //Şirket Entity
 
-    public static Personal CreatePersonal(PersonalDTO personalDTO)=> new Personal(personalDTO) { CreatedDate=DateTime.Now};
+    public static Personal CreatePersonal(PersonalDTO personalDTO)=> new Personal(personalDTO) { CreatedDate=DateTime.Now };
     public PersonalDTO CreatePersonalDTO()=>new PersonalDTO
     {
         Id=this.Id,

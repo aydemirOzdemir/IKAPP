@@ -20,7 +20,7 @@ public  class Vocation:AuditableEntity,IAggregateRoot
     //navigation properties
     public ICollection<Personal>? Personeller { get; private set; }
 
-    public static Vocation CreateVocation(VocationDTO vocationDTO) => new(vocationDTO) { CreatedDate = DateTime.Now };
+    public static Vocation CreateVocation(VocationDTO vocationDTO) => new(vocationDTO) { CreatedDate = DateTime.Now ,Status=Enums.Status.Added};
     public VocationDTO CreateVocationDTO() => new()
     {
         Id = this.Id,
@@ -30,6 +30,7 @@ public  class Vocation:AuditableEntity,IAggregateRoot
     {
         IsActive = false;
         DeletedDate = DateTime.Now;
+        Status = Enums.Status.Deleted;
         return Task.CompletedTask;
     }
     public Task UpdateVocation(VocationUpdateDTO vocationUpdateDTO)
@@ -37,6 +38,7 @@ public  class Vocation:AuditableEntity,IAggregateRoot
         Id=vocationUpdateDTO.Id;
         Name = new(vocationUpdateDTO.Name);
         ModifiedDate = DateTime.Now;
+        Status = Enums.Status.Modified;
         return Task.CompletedTask;
     }
     public Task AddPersonals(List<Personal> personals)

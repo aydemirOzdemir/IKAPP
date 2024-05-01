@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IKAPP.Application.Dtos\IKAPP.Application.Dtos.csproj" />
+    <ProjectReference Include="..\IKAPP.Application\IKAPP.Application.csproj" />
   </ItemGroup>
 
 </Project>

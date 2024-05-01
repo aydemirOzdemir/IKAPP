@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IKAPP.Application.Mapping\IKAPP.Application.Mapping.csproj" />
+    <ProjectReference Include="..\IKAPP.Application.Dtos\IKAPP.Application.Dtos.csproj" />
   </ItemGroup>
 
 </Project>

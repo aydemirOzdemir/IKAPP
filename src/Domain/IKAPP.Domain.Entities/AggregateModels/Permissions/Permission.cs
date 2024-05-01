@@ -44,7 +44,7 @@ public class Permission : BaseEntityForBusiness, IAggregateRoot
     public TypeofPermission TypeofPermission { get; private set; }
     public Personal Personal { get; private set; }
     public Company? Company { get; private set; }
-    public static Permission CreatePermission(PermissionDTO permissionDTO) => new(permissionDTO) { CreatedDate = DateTime.Now };
+    public static Permission CreatePermission(PermissionDTO permissionDTO) => new(permissionDTO) { CreatedDate = DateTime.Now,Status=Status.Added };
 
     public PermissionDTO CreatePermissionDTO() => new()
     {
@@ -68,6 +68,7 @@ public class Permission : BaseEntityForBusiness, IAggregateRoot
     {
         IsActive = false;
         DeletedDate = DateTime.Now;
+        Status=Status.Deleted;
         return Task.CompletedTask;
     }
     public Task UpdatePermission(PermissionUpdateDTO permissionUpdateDTO)
@@ -77,6 +78,7 @@ public class Permission : BaseEntityForBusiness, IAggregateRoot
         TypeofPermissionId= permissionUpdateDTO.TypeofPermissionId;
         TypeofPermission = TypeofPermission;
         ModifiedDate=DateTime.Now;
+        Status = Status.Modified;
         return  Task.CompletedTask;
     }
 

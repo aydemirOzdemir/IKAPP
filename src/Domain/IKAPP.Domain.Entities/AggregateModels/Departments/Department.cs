@@ -22,9 +22,9 @@ public class Department : AuditableEntity, IAggregateRoot
     }
     //navigation properties
     public ICollection<Personal>? Personeller { get; private set; }
-    public ICollection<DepartmentCompany>? Siketler { get; private set; }
+    public ICollection<DepartmentCompany>? Sirketler { get; private set; }
 
-    public Department CreateDepartment(DepartmentDTO departmentDTO) => new(departmentDTO) { CreatedDate = DateTime.Now };
+    public static Department CreateDepartment(DepartmentDTO departmentDTO) => new(departmentDTO) { CreatedDate = DateTime.Now, Status=Enums.Status.Added };
 
     public DepartmentDTO CreateDepartmentDTO() => new()
     {
@@ -35,6 +35,7 @@ public class Department : AuditableEntity, IAggregateRoot
     {
         IsActive = false;
         DeletedDate = DateTime.Now;
+        Status= Enums.Status.Deleted;
         return Task.CompletedTask;
     }
     public Task UpdateDepartment(DepartmentUpdateDTO departmentUpdateDTO)
@@ -42,6 +43,7 @@ public class Department : AuditableEntity, IAggregateRoot
         Id = departmentUpdateDTO.Id;
         Name=new(departmentUpdateDTO.Name);
         ModifiedDate = DateTime.Now;
+        Status=Enums.Status.Modified;
         return Task.CompletedTask;
     }
     public Task AddPersonals(List<Personal> personals)

@@ -30,7 +30,7 @@ public  class TypeofPermission:AuditableEntity,IAggregateRoot
     public Gender Gender { get; private set; }
     public ICollection<Permission> Permissions { get;private set; }
 
-    public static TypeofPermission CreateTypeOfPermission(TypeOfPermissionDTO typeOfPermissionDTO) => new(typeOfPermissionDTO) { CreatedDate=DateTime.Now };
+    public static TypeofPermission CreateTypeOfPermission(TypeOfPermissionDTO typeOfPermissionDTO) => new(typeOfPermissionDTO) { CreatedDate=DateTime.Now , Status = Status.Added };
     public TypeOfPermissionDTO CreateTypeOfPermissionDTO() => new()
     {
         Id = this.Id,
@@ -42,6 +42,7 @@ public  class TypeofPermission:AuditableEntity,IAggregateRoot
     {
         IsActive = false;
         DeletedDate = DateTime.Now;
+        Status= Status.Deleted;
         return Task.CompletedTask;
     }
     public Task UpdateTypeOfPermission(TypeOfPermissionUpdateDTO typeOfPermissionUpdateDTO)
@@ -51,6 +52,7 @@ public  class TypeofPermission:AuditableEntity,IAggregateRoot
         Duration = typeOfPermissionUpdateDTO.Duration;
         Gender = typeOfPermissionUpdateDTO.Gender;
         ModifiedDate = DateTime.Now;
+        Status = Status.Modified;
         return Task.CompletedTask;
     }
     public Task AddPermissions(List<Permission> permissions)
