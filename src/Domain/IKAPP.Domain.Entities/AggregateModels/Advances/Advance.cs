@@ -83,7 +83,7 @@ public class Advance : BaseEntityForBusiness, IAggregateRoot
     }
     public Task SoftDeleteAdvance()
     {
-        IsActive = false;
+      
         DeletedDate = DateTime.Now;
         Status = Status.Deleted;
         return Task.CompletedTask;

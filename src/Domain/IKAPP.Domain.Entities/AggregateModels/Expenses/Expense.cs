@@ -68,7 +68,7 @@ public class Expense : BaseEntityForBusiness, IAggregateRoot
 
     public Task SoftDeleteExpense()
     {
-        IsActive = false;
+
         DeletedDate = DateTime.Now;
         Status = Status.Deleted;
         return Task.CompletedTask;

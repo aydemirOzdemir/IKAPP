@@ -66,7 +66,7 @@ public class Permission : BaseEntityForBusiness, IAggregateRoot
     };
     public Task SoftDeletePermission()
     {
-        IsActive = false;
+
         DeletedDate = DateTime.Now;
         Status=Status.Deleted;
         return Task.CompletedTask;

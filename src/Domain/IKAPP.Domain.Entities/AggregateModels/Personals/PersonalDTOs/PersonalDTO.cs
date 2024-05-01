@@ -24,7 +24,7 @@ public sealed record PersonalDTO
     public DateTime StartDateOfWork { get; init; } = default!;
     public DateTime? FinishDateOfWork { get; init; }
     public DateTime BirthDate { get; init; } = default!;
-    public decimal? Salary { get; init; }
+    public decimal Salary { get; init; }
     public string Address { get; init; } = null!;
     public Gender Gender { get; init; } = default!;
     public string PlaceOfBirth { get; init; } = null!;

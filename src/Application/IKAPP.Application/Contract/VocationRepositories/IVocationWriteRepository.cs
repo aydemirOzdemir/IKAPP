@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 
 namespace IKAPP.Application.Contract.VocationRepositories;
 
-public interface IVocationWriteRepository:IReadRepository<Vocation>
+public interface IVocationWriteRepository:IWriteRepository<Vocation>
 {
 }

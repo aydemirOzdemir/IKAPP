@@ -33,7 +33,7 @@ public class Department : AuditableEntity, IAggregateRoot
     };
     public Task SoftDeleteDepartment()
     {
-        IsActive = false;
+  
         DeletedDate = DateTime.Now;
         Status= Enums.Status.Deleted;
         return Task.CompletedTask;

@@ -67,7 +67,7 @@ public  class Personal:IdentityUser,IAggregateRoot
     public DateTime StartDateOfWork { get; private set; } 
     public DateTime? FinishDateOfWork { get; private set; }
     public BirthDate BirthDate { get; private set; } 
-    public decimal? Salary { get; private set; }
+    public decimal Salary { get; private set; }
     public string Address { get; private set; } 
     public Gender Gender { get; private set; }
     public string PlaceOfBirth { get; private set; }
@@ -75,8 +75,8 @@ public  class Personal:IdentityUser,IAggregateRoot
     public string VocationId { get; private set; } 
     public string CompanyId { get; private set; } 
     public string DepartmanId { get; private set; } 
-    public decimal? UsedAdvance { get; private set; }
-    public int? NumberofAdvance { get; private set; }
+    public decimal UsedAdvance { get; private set; }
+    public int NumberofAdvance { get; private set; }
     public DateTime? AdvanceRenewalDate { get; private set; }
     public DateTime CreatedDate { get; private set; }
     public DateTime ModifiedDate { get; private set; }
@@ -162,5 +162,8 @@ public  class Personal:IdentityUser,IAggregateRoot
 
         return Task.CompletedTask;
     }
+    public void UpdateUsedOfAdvance(decimal usedofAdvance)=>UsedAdvance=usedofAdvance;
+    public void UpdateNumberOfAdvance(int numberofAdvance)=>NumberofAdvance=numberofAdvance;
+    public void UpdateAdvanceRenewalDate(DateTime advanceRenewalDate)=>AdvanceRenewalDate=advanceRenewalDate;
 
 }

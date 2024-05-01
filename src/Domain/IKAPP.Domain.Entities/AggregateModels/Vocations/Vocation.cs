@@ -28,7 +28,6 @@ public  class Vocation:AuditableEntity,IAggregateRoot
     };
     public Task SoftDeleteVocation()
     {
-        IsActive = false;
         DeletedDate = DateTime.Now;
         Status = Enums.Status.Deleted;
         return Task.CompletedTask;

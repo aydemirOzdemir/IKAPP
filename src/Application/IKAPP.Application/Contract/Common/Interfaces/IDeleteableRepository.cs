@@ -9,5 +9,5 @@ namespace IKAPP.Application.Contract.Common.Interfaces;
 
 public interface IDeleteableRepository<TEntity>where TEntity : AuditableEntity
 {
-    bool Delete(TEntity entity);
+    void Delete(TEntity entity);
 }

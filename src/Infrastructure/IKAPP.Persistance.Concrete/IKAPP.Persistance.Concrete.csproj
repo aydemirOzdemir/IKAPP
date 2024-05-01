@@ -11,16 +11,4 @@
     <ProjectReference Include="..\IKAPP.Persistance\IKAPP.Persistance.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\Common\" />
-    <Folder Include="Repositories\AdvanceRepositories\" />
-    <Folder Include="Repositories\CompanyRepositories\" />
-    <Folder Include="Repositories\DepartmentRepositories\" />
-    <Folder Include="Repositories\ExpenseRepositories\" />
-    <Folder Include="Repositories\VocationRepositories\" />
-    <Folder Include="Repositories\TypeOfPermissionRepositories\" />
-    <Folder Include="Repositories\PermissionRepositories\" />
-    <Folder Include="UnitOfWork\" />
-  </ItemGroup>
-
 </Project>
