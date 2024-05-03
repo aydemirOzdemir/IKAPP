@@ -10,4 +10,17 @@
     <ProjectReference Include="..\IKAPP.Application.Dtos\IKAPP.Application.Dtos.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\AdvanceFeatures\AdvanceExceptions\" />
+    <Folder Include="Features\AutFeatures\AuthExceptions\" />
+    <Folder Include="Features\CompanyFeatures\CompanyExceptions\" />
+    <Folder Include="Features\DepartmentFeatures\DepartmentExceptions\" />
+    <Folder Include="Features\ExpenseFeatures\ExpenseExceptions\" />
+    <Folder Include="Features\PermissionFeatures\PermissionExceptions\" />
+    <Folder Include="Features\PersonalFeatures\PersonalExceptions\" />
+    <Folder Include="Features\RoleFeatures\RoleExceptions\" />
+    <Folder Include="Features\TypeOfPermissionFeatures\TypeOfPermissionExceptions\" />
+    <Folder Include="Features\VocationFeatures\VocationExceptions\" />
+  </ItemGroup>
+
 </Project>
