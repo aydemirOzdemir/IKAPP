@@ -7,10 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IKAPP.Application.Features.RoleFeatures.RoleCommands.RoleEdit;
+namespace IKAPP.Application.Features.RoleFeatures.RoleCommands.RoleDelete;
 
-public class RoleEditCommand:IRequest<IAuthResult<IdentityResult>>
+public class RoleDeleteCommand:IRequest<IAuthResult<IdentityResult>>
 {
     public string Id { get; set; }
-    public string Name { get; set; }
 }
