@@ -11,7 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\AdvanceFeatures\AdvanceExceptions\" />
     <Folder Include="Features\AutFeatures\AuthExceptions\" />
     <Folder Include="Features\CompanyFeatures\CompanyExceptions\" />
     <Folder Include="Features\DepartmentFeatures\DepartmentExceptions\" />
