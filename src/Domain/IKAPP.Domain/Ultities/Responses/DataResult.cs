@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IKAPP.Domain.Ultities.Responses;
 
-public class DataResult<T> : Result,IDataResult<T>
+public class DataResult<T> : Result,IDataResult<T>,IResult
 {
     public T? Data { get; }
 
@@ -19,11 +19,11 @@ public class DataResult<T> : Result,IDataResult<T>
     {
         Data = data;
     }
-    public static IResult DataResponse<T>(T? data,HttpStatusCode statusCode, string message)
+    public static IDataResult<T> DataResponse<T>(T? data,HttpStatusCode statusCode, string message)
     {
         return new DataResult<T>(data,statusCode, message);
     }
-    public static IResult DataResponse<T>(T? data,HttpStatusCode statusCode, List<string> messages)
+    public static IDataResult<T> DataResponse<T>(T? data,HttpStatusCode statusCode, List<string> messages)
     {
         return new DataResult<T>(data,statusCode, messages);
     }
