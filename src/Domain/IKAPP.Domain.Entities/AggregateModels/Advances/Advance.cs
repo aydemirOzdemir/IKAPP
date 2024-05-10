@@ -35,9 +35,7 @@ public class Advance : BaseEntityForBusiness, IAggregateRoot
         CompanyId = advanceDTO.CompanyId;
         Personal = advanceDTO.Personal;
         Company = advanceDTO.Company;
-        StatusofApproval = advanceDTO.StatusofApproval;
-        DateofReply = advanceDTO.DateofReply;
-        RequestDate = advanceDTO.RequestDate;
+        UpdateEntityForBusiines(advanceDTO.RequestDate, advanceDTO.DateofReply, advanceDTO.StatusofApproval);
 
     }
 
@@ -50,7 +48,12 @@ public class Advance : BaseEntityForBusiness, IAggregateRoot
     public Personal Personal { get; private set; }
     public Company? Company { get; private set; }
 
-    public static Advance CreateAdvance(AdvanceDTO advanceDTO) => new(advanceDTO) { CreatedDate = DateTime.Now,Status=Status.Added };
+    public static Advance CreateAdvance(AdvanceDTO advanceDTO) 
+    {
+        Advance advance = new(advanceDTO);
+        advance.UpdateBaseEntiy(null,DateTime.Now,null,Enums.Status.Added,null);
+        return advance;
+    }
 
     public  AdvanceDTO CreateAdvanceDTO() => new AdvanceDTO()
     {
@@ -72,20 +75,17 @@ public class Advance : BaseEntityForBusiness, IAggregateRoot
 
     public  Task UpdateAdvance(AdvanceUpdateDTO advanceUpdateDTO)
     {
-        Id= advanceUpdateDTO.Id;
         TotalAmount=new(advanceUpdateDTO.TotalAmount);
         Currency = advanceUpdateDTO.Currency;
         TypeofAdvance= advanceUpdateDTO.TypeofAdvance;
         Description = advanceUpdateDTO.Description;
-        ModifiedDate=DateTime.Now;
-        Status=Status.Modified;
+        UpdateBaseEntiy(null,null, advanceUpdateDTO.Id, Enums.Status.Modified,DateTime.Now);
         return Task.CompletedTask;
     }
     public Task SoftDeleteAdvance()
     {
-      
-        DeletedDate = DateTime.Now;
-        Status = Status.Deleted;
+        UpdateDeleteDate(DateTime.Now);
+        UpdateBaseEntiy(null,null,null,Enums.Status.Deleted,null);
         return Task.CompletedTask;
     }
 }

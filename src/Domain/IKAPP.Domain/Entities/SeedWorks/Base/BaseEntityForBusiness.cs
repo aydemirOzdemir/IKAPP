@@ -12,12 +12,22 @@ public class BaseEntityForBusiness : AuditableEntity
 {
     public BaseEntityForBusiness(string id,Name name) : base(id,name)
     {
-        Id = id;
         RequestDate = DateTime.Now;
         StatusofApproval = Approval.AwaitingApproval;
     }
-    public DateTime RequestDate { get; set; }
+    public DateTime? RequestDate { get; private set; }
 
-    public DateTime DateofReply { get; set; }
-    public Approval StatusofApproval { get; set; }
+    public DateTime? DateofReply { get; private set; }
+    public Approval? StatusofApproval { get;private set; }
+
+    public void UpdateEntityForBusiines(DateTime? requestDate,DateTime? dateofReply,Approval? approval)
+    {
+        if(requestDate!=null)
+            RequestDate = requestDate;
+        if(dateofReply!=null)
+            DateofReply = dateofReply;
+        if (approval != null)
+            StatusofApproval = approval;
+
+    }
 }

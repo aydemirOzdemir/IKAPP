@@ -9,5 +9,5 @@ namespace IKAPP.Domain.Entities.Interfaces;
 public interface IUpdateableEntity
 {
    
-    DateTime ModifiedDate { get; set; }
+    DateTime? ModifiedDate { get;  }
 }

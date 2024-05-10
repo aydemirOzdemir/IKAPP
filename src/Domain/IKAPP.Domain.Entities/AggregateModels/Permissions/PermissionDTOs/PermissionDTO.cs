@@ -15,13 +15,13 @@ namespace IKAPP.Domain.Entities.AggregateModels.Permissions.PermissionDTOs;
 public class PermissionDTO
 {
     public string Id { get; init; } = null!;
-    public DateTime RequestDate { get; init; }=default!;
+    public DateTime? RequestDate { get; init; }=default!;
     public string Name { get; init; } = null!;
     public DateTime StartedDate { get; init; } = default!;
     public DateTime FinishedDate { get; init; } = default!;
     public byte DayCount { get; init; } = default!;
-    public DateTime DateofReply { get; init; }
-    public Approval StatusofApproval { get; init; }
+    public DateTime? DateofReply { get; init; }
+    public Approval? StatusofApproval { get; init; }
 
     public string TypeofPermissionId { get; init; } = null!;
     public string PersonalId { get;  init; } = null!;

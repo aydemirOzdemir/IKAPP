@@ -1,6 +1,8 @@
-﻿using IKAPP.Domain.Entities.AggregateModels.Advances.AdvanceValueObjects;
+﻿using IKAPP.Domain.Entities.AggregateModels.Advances.AdvanceDTOs;
+using IKAPP.Domain.Entities.AggregateModels.Advances.AdvanceValueObjects;
 using IKAPP.Domain.Entities.AggregateModels.Companies;
 using IKAPP.Domain.Entities.AggregateModels.Departments;
+using IKAPP.Domain.Entities.AggregateModels.Departments.DepartmentDTOs;
 using IKAPP.Domain.Entities.AggregateModels.Expenses.ExpenseDTOs;
 using IKAPP.Domain.Entities.AggregateModels.Expenses.ExpenseRules;
 using IKAPP.Domain.Entities.AggregateModels.Personals;
@@ -35,8 +37,7 @@ public class Expense : BaseEntityForBusiness, IAggregateRoot
         CompanyId = expenseDTO.CompanyId;
         Personal = expenseDTO.Personal;
         Company = expenseDTO.Company;
-        DateofReply = expenseDTO.DateofReply;
-        RequestDate = expenseDTO.RequestDate;
+        UpdateEntityForBusiines(expenseDTO.RequestDate, expenseDTO.DateofReply, expenseDTO.StatusofApproval);
 
 
     }
@@ -48,7 +49,12 @@ public class Expense : BaseEntityForBusiness, IAggregateRoot
     public string? CompanyId { get; private set; }
     public Personal Personal { get; private set; }
     public Company? Company { get; private set; }
-    public static Expense CreateExpense(ExpenseDTO expenseDTO) => new(expenseDTO) { CreatedDate = DateTime.Now,Status=Status.Added };
+    public static Expense CreateExpense(ExpenseDTO expenseDTO)
+    {
+        Expense expense = new(expenseDTO);
+        expense.UpdateBaseEntiy(null, DateTime.Now, null, Enums.Status.Added, null); 
+        return expense;
+    } 
 
     public ExpenseDTO CreateExpenseDTO() => new()
     {
@@ -69,19 +75,18 @@ public class Expense : BaseEntityForBusiness, IAggregateRoot
     public Task SoftDeleteExpense()
     {
 
-        DeletedDate = DateTime.Now;
-        Status = Status.Deleted;
+        UpdateDeleteDate(DateTime.Now);
+        UpdateBaseEntiy(null, null, null, Enums.Status.Deleted, null);
         return Task.CompletedTask;
     }
     public Task UpdateExpense(ExpenseUpdateDTO expenseUpdateDTO)
     {
-        Id=expenseUpdateDTO.Id;
         TotalAmount = new(expenseUpdateDTO.TotalAmount);
         Currency = expenseUpdateDTO.Currency;
         TypeofExpense=expenseUpdateDTO.TypeofExpenses;
         Documantation = expenseUpdateDTO.Documantation;
-        ModifiedDate=DateTime.Now;
-        Status = Status.Modified;
+      
+        UpdateBaseEntiy(null, null, expenseUpdateDTO.Id, Enums.Status.Modified, DateTime.Now);
         return Task.CompletedTask;
     }
 

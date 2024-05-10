@@ -17,11 +17,11 @@ public abstract class BaseEntity : IEntity, ICreateableEntity, IUpdateableEntity
         Name = name;
 
     }
-    public Name Name { get;  set; }
-    public DateTime CreatedDate { get; set; }
-    public string Id { get; set; }
-    public Status Status { get; set; }
-    public DateTime ModifiedDate { get; set; }
+    public Name Name { get; private set; }
+    public DateTime? CreatedDate { get; private set; }
+    public string Id { get; private set; }
+    public Status? Status { get; private set; }
+    public DateTime? ModifiedDate { get; private set; }
 
     public bool Equals(BaseEntity? other)
     {
@@ -29,5 +29,14 @@ public abstract class BaseEntity : IEntity, ICreateableEntity, IUpdateableEntity
         if (other is not BaseEntity entity) return false;
         if (other.GetType() != GetType()) return false;
         return entity.Id == Id;
+    }
+
+    public void UpdateBaseEntiy(Name? name,DateTime? createdTime,string? id, Status? status,DateTime? modifiedDate)
+    {
+        if(name!=null) Name= name;
+        if (createdTime != null) CreatedDate = createdTime;
+        if (id != null) Id = id;
+        if (status != null) Status = status;
+        if (modifiedDate != null) ModifiedDate = modifiedDate;
     }
 }

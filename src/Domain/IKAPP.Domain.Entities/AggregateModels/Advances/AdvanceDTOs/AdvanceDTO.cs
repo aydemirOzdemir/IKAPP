@@ -15,10 +15,10 @@ public sealed record AdvanceDTO
 {
 
     public string Id { get; set; } = null!;
-    public DateTime RequestDate { get; set; } = default!;
+    public DateTime? RequestDate { get; set; } = default!;
     public string Name { get; set; } = null!;
-    public DateTime DateofReply { get; set; }
-    public Approval StatusofApproval { get; set; }
+    public DateTime? DateofReply { get; set; }
+    public Approval? StatusofApproval { get; set; }
     public decimal TotalAmount { get; set; } 
     public Currency Currency { get; set; } = default!;
     public TypeofAdvance TypeofAdvance { get;  set; } = default!;

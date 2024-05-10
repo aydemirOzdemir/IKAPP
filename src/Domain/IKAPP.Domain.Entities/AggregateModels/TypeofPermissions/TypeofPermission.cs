@@ -1,4 +1,5 @@
-﻿using IKAPP.Domain.Entities.AggregateModels.Permissions;
+﻿using IKAPP.Domain.Entities.AggregateModels.Companies.CompanyDTOs;
+using IKAPP.Domain.Entities.AggregateModels.Permissions;
 using IKAPP.Domain.Entities.AggregateModels.TypeofPermissions.TypeofPermissionDTOs;
 using IKAPP.Domain.Entities.AggregateModels.TypeofPermissions.TypeofPermissionRules;
 using IKAPP.Domain.Entities.Enums;
@@ -30,7 +31,12 @@ public  class TypeofPermission:AuditableEntity,IAggregateRoot
     public Gender Gender { get; private set; }
     public ICollection<Permission> Permissions { get;private set; }
 
-    public static TypeofPermission CreateTypeOfPermission(TypeOfPermissionDTO typeOfPermissionDTO) => new(typeOfPermissionDTO) { CreatedDate=DateTime.Now , Status = Status.Added };
+    public static TypeofPermission CreateTypeOfPermission(TypeOfPermissionDTO typeOfPermissionDTO) 
+    {
+        TypeofPermission typeofPermission = new(typeOfPermissionDTO);
+        typeofPermission.UpdateBaseEntiy(null, DateTime.Now, null, Enums.Status.Added, null);
+        return typeofPermission;
+    }
     public TypeOfPermissionDTO CreateTypeOfPermissionDTO() => new()
     {
         Id = this.Id,
@@ -41,18 +47,16 @@ public  class TypeofPermission:AuditableEntity,IAggregateRoot
     public Task SoftDeleteTypeOfPermission()
     {
 
-        DeletedDate = DateTime.Now;
-        Status= Status.Deleted;
+        UpdateDeleteDate(DateTime.Now);
+        UpdateBaseEntiy(null, null, null, Enums.Status.Deleted, null);
         return Task.CompletedTask;
     }
     public Task UpdateTypeOfPermission(TypeOfPermissionUpdateDTO typeOfPermissionUpdateDTO)
     {
-        Id=typeOfPermissionUpdateDTO.Id;
-        Name = new(typeOfPermissionUpdateDTO.Name);
+        
         Duration = typeOfPermissionUpdateDTO.Duration;
         Gender = typeOfPermissionUpdateDTO.Gender;
-        ModifiedDate = DateTime.Now;
-        Status = Status.Modified;
+        UpdateBaseEntiy(new(typeOfPermissionUpdateDTO.Name), null, typeOfPermissionUpdateDTO.Id, Enums.Status.Modified, DateTime.Now);
         return Task.CompletedTask;
     }
     public Task AddPermissions(List<Permission> permissions)

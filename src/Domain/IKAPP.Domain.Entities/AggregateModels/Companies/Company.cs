@@ -56,7 +56,12 @@ public class Company : AuditableEntity, IAggregateRoot
     public ICollection<Expense>? Harcamalar { get; private set; }
     public ICollection<Permission>? Izinler { get; private set; }
 
-    public static Company CreateCompany(CompanyDTO companyDTO) => new(companyDTO) { CreatedDate = DateTime.Now,Status=Status.Added };
+    public static Company CreateCompany(CompanyDTO companyDTO) 
+    {
+        Company company = new(companyDTO);
+        company.UpdateBaseEntiy(null,DateTime.Now,null,Enums.Status.Added,null);
+        return company;
+    }
 
     public CompanyDTO CreateCompanyDTO() => new()
     {
@@ -76,8 +81,6 @@ public class Company : AuditableEntity, IAggregateRoot
     };
     public Task UpdateCompany(CompanyUpdateDTO companyUpdateDTO)
     {
-        Id = companyUpdateDTO.Id;
-        Name = new(companyUpdateDTO.Name);
         MersisNo = companyUpdateDTO.MersisNo;
         VergiDairesi = companyUpdateDTO.VergiDairesi;
         Adres = companyUpdateDTO.Adres;
@@ -88,15 +91,14 @@ public class Company : AuditableEntity, IAggregateRoot
         KurulusTarihi = companyUpdateDTO.KurulusTarihi;
         SozlesmeBaslangic = companyUpdateDTO.SozlesmeBaslangic;
         SozlesmeBitis = companyUpdateDTO.SozlesmeBitis;
-        ModifiedDate = DateTime.Now;
-        Status = Status.Modified;
+        UpdateBaseEntiy(new(companyUpdateDTO.Name),null, companyUpdateDTO.Id,Enums.Status.Modified,DateTime.Now);
         return Task.CompletedTask;
     }
     public Task SoftDeleteCompany()
     {
       
-        DeletedDate = DateTime.Now;
-        Status= Status.Deleted;
+        UpdateBaseEntiy(null, null, null, Enums.Status.Deleted, null);
+        UpdateDeleteDate(DateTime.Now);
         return Task.CompletedTask;
     }
     public Task AddPersonals(List<Personal> personals)

@@ -1,4 +1,5 @@
 ﻿using IKAPP.Domain.Entities.AggregateModels.Companies;
+using IKAPP.Domain.Entities.AggregateModels.Expenses.ExpenseDTOs;
 using IKAPP.Domain.Entities.AggregateModels.Permissions.PermissionDTOs;
 using IKAPP.Domain.Entities.AggregateModels.Permissions.PermissionRules;
 using IKAPP.Domain.Entities.AggregateModels.Permissions.PermissionValueObjects;
@@ -44,7 +45,12 @@ public class Permission : BaseEntityForBusiness, IAggregateRoot
     public TypeofPermission TypeofPermission { get; private set; }
     public Personal Personal { get; private set; }
     public Company? Company { get; private set; }
-    public static Permission CreatePermission(PermissionDTO permissionDTO) => new(permissionDTO) { CreatedDate = DateTime.Now,Status=Status.Added };
+    public static Permission CreatePermission(PermissionDTO permissionDTO)
+    {
+        Permission permission = new(permissionDTO);
+        permission.UpdateBaseEntiy(null,DateTime.Now,null,Enums.Status.Added,null);
+        return permission;
+    }
 
     public PermissionDTO CreatePermissionDTO() => new()
     {
@@ -67,18 +73,17 @@ public class Permission : BaseEntityForBusiness, IAggregateRoot
     public Task SoftDeletePermission()
     {
 
-        DeletedDate = DateTime.Now;
-        Status=Status.Deleted;
+        UpdateDeleteDate(DateTime.Now);
+        UpdateBaseEntiy(null, null, null, Enums.Status.Deleted, null);
         return Task.CompletedTask;
     }
     public Task UpdatePermission(PermissionUpdateDTO permissionUpdateDTO)
     {
-        Id = permissionUpdateDTO.Id;
+       
         PermissionTime = new(permissionUpdateDTO.StartedDate,permissionUpdateDTO.FinishedDate,permissionUpdateDTO.DayCount);
         TypeofPermissionId= permissionUpdateDTO.TypeofPermissionId;
         TypeofPermission = TypeofPermission;
-        ModifiedDate=DateTime.Now;
-        Status = Status.Modified;
+        UpdateBaseEntiy(null, null, permissionUpdateDTO.Id, Enums.Status.Modified, DateTime.Now);
         return  Task.CompletedTask;
     }
 

@@ -1,4 +1,5 @@
 ﻿using IKAPP.Domain.Entities.AggregateModels.Personals;
+using IKAPP.Domain.Entities.AggregateModels.TypeofPermissions.TypeofPermissionDTOs;
 using IKAPP.Domain.Entities.AggregateModels.Vocations.VocationDTOs;
 using IKAPP.Domain.Entities.SeedWorks;
 using IKAPP.Domain.Entities.SeedWorks.Base;
@@ -20,7 +21,12 @@ public  class Vocation:AuditableEntity,IAggregateRoot
     //navigation properties
     public ICollection<Personal>? Personeller { get; private set; }
 
-    public static Vocation CreateVocation(VocationDTO vocationDTO) => new(vocationDTO) { CreatedDate = DateTime.Now ,Status=Enums.Status.Added};
+    public static Vocation CreateVocation(VocationDTO vocationDTO) 
+    {
+        Vocation vocation = new(vocationDTO);
+        vocation.UpdateBaseEntiy(null, DateTime.Now, null, Enums.Status.Added, null);
+        return vocation;
+    }
     public VocationDTO CreateVocationDTO() => new()
     {
         Id = this.Id,
@@ -28,16 +34,14 @@ public  class Vocation:AuditableEntity,IAggregateRoot
     };
     public Task SoftDeleteVocation()
     {
-        DeletedDate = DateTime.Now;
-        Status = Enums.Status.Deleted;
+        UpdateDeleteDate(DateTime.Now);
+        UpdateBaseEntiy(null, null, null, Enums.Status.Deleted, null);
         return Task.CompletedTask;
     }
     public Task UpdateVocation(VocationUpdateDTO vocationUpdateDTO)
     {
-        Id=vocationUpdateDTO.Id;
-        Name = new(vocationUpdateDTO.Name);
-        ModifiedDate = DateTime.Now;
-        Status = Enums.Status.Modified;
+       
+        UpdateBaseEntiy(new(vocationUpdateDTO.Name), null, vocationUpdateDTO.Id, Enums.Status.Modified, DateTime.Now);
         return Task.CompletedTask;
     }
     public Task AddPersonals(List<Personal> personals)

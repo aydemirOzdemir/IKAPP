@@ -8,5 +8,5 @@ namespace IKAPP.Domain.Entities.Interfaces;
 
 public interface ISoftDeleteEntity
 {
-    DateTime? DeletedDate { get; set; }
+    DateTime? DeletedDate { get;  }
 }

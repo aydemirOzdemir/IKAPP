@@ -9,5 +9,5 @@ namespace IKAPP.Domain.Entities.Interfaces;
 public interface ICreateableEntity
 {
 
-   DateTime CreatedDate { get; set; }
+   DateTime? CreatedDate { get;  }
 }

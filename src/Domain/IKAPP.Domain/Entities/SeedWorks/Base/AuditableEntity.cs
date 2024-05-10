@@ -12,6 +12,10 @@ public abstract class AuditableEntity : BaseEntity, ISoftDeleteEntity
 {
     public AuditableEntity(string id,Name name) : base(id,name) { }
 
-    public DateTime? DeletedDate { get; set; }
-
+    public DateTime? DeletedDate { get; private  set; }
+    public void UpdateDeleteDate(DateTime? deletedDate)
+    {
+        if(deletedDate!=null)
+        DeletedDate = deletedDate;
+    }
 }

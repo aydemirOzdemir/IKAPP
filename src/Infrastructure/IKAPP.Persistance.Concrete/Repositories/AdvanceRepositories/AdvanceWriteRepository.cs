@@ -31,15 +31,17 @@ public class AdvanceWriteRepository:WriteRepository<Advance>,IAdvanceWriteReposi
             if (personel.NumberofAdvance == 0)
                 personel.UpdateAdvanceRenewalDate(DateTime.Now.AddYears(1));//5 aralık 2024
          
-            advance.StatusofApproval = Approval.Approved;
+            
+            advance.UpdateEntityForBusiines(null,null, Approval.Approved);
 
           
             personel.UpdateUsedOfAdvance(personel.UsedAdvance+advance.TotalAmount.Value);
             personel.UpdateNumberOfAdvance(personel.NumberofAdvance+1);
         }
         else
-            advance.StatusofApproval = Approval.Denied;
-        
+            
+        advance.UpdateEntityForBusiines(null, null, Approval.Denied);
+
         return new Tuple<Personal, Advance>(personel, advance);
     }
 }

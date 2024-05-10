@@ -14,10 +14,10 @@ namespace IKAPP.Domain.Entities.AggregateModels.Expenses.ExpenseDTOs;
 public sealed record ExpenseDTO
 {
     public string Id { get; init; } = null!;
-    public DateTime RequestDate { get; init; }
+    public DateTime? RequestDate { get; init; }
     public string Name { get; init; }=null!;
-    public DateTime DateofReply { get; init; }
-    public Approval StatusofApproval { get; init; }
+    public DateTime? DateofReply { get; init; }
+    public Approval? StatusofApproval { get; init; }
     public decimal TotalAmount { get;  init; }
     public Currency Currency { get; init; } = default!;
     public TypeofExpenses TypeofExpense { get; init; } = default!;
