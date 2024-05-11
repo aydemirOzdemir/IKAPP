@@ -72,6 +72,28 @@ public class Advance : BaseEntityForBusiness, IAggregateRoot
         Company = this.Company,
         
     };
+    public static IEnumerable<AdvanceDTO> CreateAdvanceDTOs(IEnumerable<Advance> advances)
+    {
+        List<AdvanceDTO> advanceDTOs = new List<AdvanceDTO>();
+        foreach (Advance advance in advances)
+            advanceDTOs.Add(new AdvanceDTO() 
+            {
+                Id = advance.Id,
+                RequestDate = advance.RequestDate,
+                Name = advance.Name.Value,
+                DateofReply = advance.DateofReply,
+                StatusofApproval = advance.StatusofApproval,
+                TotalAmount = advance.TotalAmount.Value,
+                Currency = advance.Currency,
+                TypeofAdvance = advance.TypeofAdvance,
+                Description = advance.Description,
+                PersonalId = advance.PersonalId,
+                CompanyId = advance.CompanyId,
+                Personal = advance.Personal,
+                Company = advance.Company,
+            });
+        return advanceDTOs;
+    }
 
     public  Task UpdateAdvance(AdvanceUpdateDTO advanceUpdateDTO)
     {
