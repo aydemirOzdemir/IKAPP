@@ -11,8 +11,8 @@ namespace IKAPP.Application.Features.AdvanceFeatures.AdvanceQueries.AdvanceGet;
 
 public class AdvanceGetQuery:IRequest<IDataResult<AdvanceViewDTO>>
 {
-    public bool Tracking { get; set; } = true;
+    public string Id { get; set; }
 
-    public bool IsApproval { get; set; } = false;
+    public bool IsApproval { get; set; }
 }
 

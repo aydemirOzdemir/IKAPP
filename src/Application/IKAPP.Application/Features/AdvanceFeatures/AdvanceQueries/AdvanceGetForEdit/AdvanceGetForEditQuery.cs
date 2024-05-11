@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace IKAPP.Application.Features.AdvanceFeatures.AdvanceQueries.AdvanceGetForEdit;
 
-public class AdvanceGetForEditQuery:IRequest<IDataResult<AdvanceViewDTO>>
+public class AdvanceGetForEditQuery:IRequest<IDataResult<AdvanceUpdateViewDTO>>
 {
     public string Id { get; set; }
 

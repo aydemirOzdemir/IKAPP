@@ -26,7 +26,7 @@ public class AdvanceEditCommandHandler : BaseHandler<IAdvanceReadRepository, IAd
         Advance? advance= await unitOfWork.ReadRepository.GetByIdAsync(request.Id);
         await rules.AdvanceMustNotBeNull(advance);
         await rules.CanNotCancelApprovedOrRejectedAdvances(advance);
-        advance.UpdateAdvance(mapper.Map<AdvanceUpdateDTO>(request));
+        await advance.UpdateAdvance(mapper.Map<AdvanceUpdateDTO>(request));
         advance.UpdateBaseEntiy(new(request.TypeofAdvance.ToString()),null,null,Status.Modified,DateTime.Now);
         Advance? updatedAdvance = await unitOfWork.WriteRepository.UpdateAsync(advance);
         await rules.AdvanceDoesNotUpdated(advance);
