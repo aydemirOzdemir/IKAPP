@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace IKAPP.Application.Features.DepartmentFeatures.DepartmentCommands.DepartmentCreate;
 
-public class DepartmentCreateCommand:IRequest<IDataResult<DepartmentCreateCommand>>
+public class DepartmentCreateCommand:IRequest<IResult>
 {
-    public string? UserName { get; set; }
+   
     public string Name { get; set; } = default!;
 }

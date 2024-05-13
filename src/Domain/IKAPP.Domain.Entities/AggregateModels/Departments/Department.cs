@@ -1,5 +1,6 @@
 ﻿using IKAPP.Domain.Entities.AggregateModels.Advances;
 using IKAPP.Domain.Entities.AggregateModels.Companies;
+using IKAPP.Domain.Entities.AggregateModels.Companies.CompanyDTOs;
 using IKAPP.Domain.Entities.AggregateModels.Departments.DepartmentDTOs;
 using IKAPP.Domain.Entities.AggregateModels.Personals;
 using IKAPP.Domain.Entities.SeedWorks;
@@ -36,6 +37,17 @@ public class Department : AuditableEntity, IAggregateRoot
         Id = this.Id,
         Name = this.Name.Value,
     };
+    public static IEnumerable<DepartmentDTO> CreateDepartmentDTOs(IEnumerable<Department> departments)
+    {
+        List<DepartmentDTO> departmentDTOs = new List<DepartmentDTO>();
+        foreach (Department department in departments)
+            departmentDTOs.Add(new DepartmentDTO()
+            {
+                Id = department.Id,
+                Name = department.Name.Value,
+            });
+        return departmentDTOs;
+    }
     public Task SoftDeleteDepartment()
     {
         UpdateDeleteDate(DateTime.Now);
