@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace IKAPP.Application.Features.CompanyFeatures.CompanyCommands.CompanyCreate;
 
-public class CompanyCreateCommand:IRequest<IDataResult<CompanyCreateCommand>>
+public class CompanyCreateCommand:IRequest<IResult>
 {
     public string Name { get; set; } = default!;
     public string Unvan { get; set; }
