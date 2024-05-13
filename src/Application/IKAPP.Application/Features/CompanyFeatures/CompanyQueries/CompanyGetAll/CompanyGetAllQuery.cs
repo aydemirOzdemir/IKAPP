@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace IKAPP.Application.Features.CompanyFeatures.CompanyQueries.CompanyGetAll;
 
-public class CompanyGetAllQuery:IRequest<IDataResult<CompanyViewDTO>>
+public class CompanyGetAllQuery:IRequest<IDataResult<IEnumerable<CompanyViewDTO>>>
 {
     public bool Tracking { get; set; } = true;
 }

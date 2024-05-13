@@ -1,4 +1,5 @@
 ﻿using IKAPP.Domain.Entities.AggregateModels.Advances;
+using IKAPP.Domain.Entities.AggregateModels.Advances.AdvanceDTOs;
 using IKAPP.Domain.Entities.AggregateModels.Companies.CompanyDTOs;
 using IKAPP.Domain.Entities.AggregateModels.Departments;
 using IKAPP.Domain.Entities.AggregateModels.Expenses;
@@ -79,6 +80,28 @@ public class Company : AuditableEntity, IAggregateRoot
         SozlesmeBaslangic = this.SozlesmeBaslangic,
         SozlesmeBitis = this.SozlesmeBitis,
     };
+    public static IEnumerable<CompanyDTO> CreateCompanyDTOs(IEnumerable<Company> companies)
+    {
+        List<CompanyDTO> companyDTOs = new List<CompanyDTO>();
+        foreach (Company company in companies)
+            companyDTOs.Add(new CompanyDTO()
+            {
+                Id = company.Id,
+                Name = company.Name.Value,
+                MersisNo = company.MersisNo,
+                VergiDairesi = company.VergiDairesi,
+                VergiNo = company.VergiNo,
+                LogoPath = company.LogoPath,
+                Phone = company.Phone,
+                Adres = company.Adres,
+                Mail = company.Mail,
+                CalisanSayisi = company.CalisanSayisi,
+                KurulusTarihi = company.KurulusTarihi,
+                SozlesmeBaslangic = company.SozlesmeBaslangic,
+                SozlesmeBitis = company.SozlesmeBitis,
+            });
+        return companyDTOs;
+    }
     public Task UpdateCompany(CompanyUpdateDTO companyUpdateDTO)
     {
         MersisNo = companyUpdateDTO.MersisNo;
