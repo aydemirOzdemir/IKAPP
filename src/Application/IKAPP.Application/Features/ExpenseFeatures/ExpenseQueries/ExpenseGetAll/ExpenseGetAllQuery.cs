@@ -13,5 +13,5 @@ public class ExpenseGetAllQuery:IRequest<IDataResult<IEnumerable<ExpenseViewDTO>
 {
     public bool Tracking { get; set; } = true;
     public bool IsApproval { get; set; } = false;
-    public string UserName { get; set; }
+   
 }

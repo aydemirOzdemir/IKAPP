@@ -13,17 +13,17 @@ namespace IKAPP.Domain.Entities.AggregateModels.Expenses.ExpenseDTOs;
 
 public sealed record ExpenseDTO
 {
-    public string Id { get; init; } = null!;
-    public DateTime? RequestDate { get; init; }
-    public string Name { get; init; }=null!;
-    public DateTime? DateofReply { get; init; }
-    public Approval? StatusofApproval { get; init; }
-    public decimal TotalAmount { get;  init; }
-    public Currency Currency { get; init; } = default!;
-    public TypeofExpenses TypeofExpense { get; init; } = default!;
-    public string Documantation { get; init; } = null!;
-    public string PersonalId { get; init; }
-    public string? CompanyId { get; init; }
-    public Personal Personal { get; init; }
-    public Company? Company { get; init; }
+    public string Id { get; set; } = null!;
+    public DateTime? RequestDate { get; set; }
+    public string Name { get; set; }=null!;
+    public DateTime? DateofReply { get; set; }
+    public Approval? StatusofApproval { get; set; }
+    public decimal TotalAmount { get; set; }
+    public Currency Currency { get; set; } = default!;
+    public TypeofExpenses TypeofExpense { get; set; } = default!;
+    public string Documantation { get; set; } = null!;
+    public string PersonalId { get; set; }
+    public string? CompanyId { get; set; }
+    public Personal Personal { get; set; }
+    public Company? Company { get; set; }
 }

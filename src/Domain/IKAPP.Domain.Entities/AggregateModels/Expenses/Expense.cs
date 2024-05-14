@@ -71,7 +71,27 @@ public class Expense : BaseEntityForBusiness, IAggregateRoot
         Personal = this.Personal,
         Company = this.Company,
     };
-
+    public static IEnumerable<ExpenseDTO> CreateExpenseDTOs(IEnumerable<Expense> expenses)
+    {
+        List<ExpenseDTO> expenseDTOs = new List<ExpenseDTO>();
+        foreach (Expense expense in expenses)
+            expenseDTOs.Add(new ExpenseDTO()
+            {
+                Id = expense.Id,
+                RequestDate = expense.RequestDate,
+                Name = expense.Name.Value,
+                DateofReply = expense.DateofReply,
+                StatusofApproval = expense.StatusofApproval,
+                TotalAmount = expense.TotalAmount.Value,
+                Currency = expense.Currency,
+                TypeofExpense = expense.TypeofExpense,
+                Documantation = expense.Documantation,
+                PersonalId = expense.PersonalId,
+                Personal = expense.Personal,
+                Company = expense.Company,
+            });
+        return expenseDTOs;
+    }
     public Task SoftDeleteExpense()
     {
 
