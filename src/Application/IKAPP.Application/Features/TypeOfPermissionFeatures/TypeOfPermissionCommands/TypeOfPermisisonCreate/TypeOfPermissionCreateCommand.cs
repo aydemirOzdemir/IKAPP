@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace IKAPP.Application.Features.TypeOfPermissionFeatures.TypeOfPermissionCommands.TypeOfPermisisonCreate;
 
-public class TypeOfPermissionCreateCommand:IRequest<IDataResult<TypeOfPermissionCreateCommand>>
+public class TypeOfPermissionCreateCommand:IRequest<IResult>
 {
     public string Name { get; set; }
     public byte Duration { get; set; }

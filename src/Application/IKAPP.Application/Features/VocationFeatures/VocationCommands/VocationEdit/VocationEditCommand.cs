@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace IKAPP.Application.Features.VocationFeatures.VocationCommands.VocationEdit;
-public class VocationEditCommand: IRequest<IDataResult<VocationEditCommand>>
+public class VocationEditCommand: IRequest<IResult>
 {
     public string Id { get; set; }
     public string Name { get; set; }

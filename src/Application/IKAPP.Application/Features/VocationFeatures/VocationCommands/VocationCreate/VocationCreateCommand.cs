@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IKAPP.Application.Features.VocationFeatures.VocationCommands.VocationCreate;
 
-public class VocationCreateCommand:IRequest<IDataResult<VocationCreateCommand>>
+public class VocationCreateCommand:IRequest<IResult>
 {
     public string Name { get; set; }
 }

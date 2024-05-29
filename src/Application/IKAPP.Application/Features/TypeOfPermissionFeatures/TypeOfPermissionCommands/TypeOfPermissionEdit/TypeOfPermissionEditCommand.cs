@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace IKAPP.Application.Features.TypeOfPermissionFeatures.TypeOfPermissionCommands.TypeOfPermissionEdit;
 
-public class TypeOfPermissionEditCommand:IRequest<IDataResult<TypeOfPermissionEditCommand>>
+public class TypeOfPermissionEditCommand:IRequest<IResult>
 {
     public string Id { get; set; }
     public string Name { get; set; } = default!;

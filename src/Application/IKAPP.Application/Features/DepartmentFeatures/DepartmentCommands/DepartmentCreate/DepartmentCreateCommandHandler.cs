@@ -27,6 +27,8 @@ public class DepartmentCreateCommandHandler : BaseHandler<IDepartmentReadReposit
     public async Task<IResult> Handle(DepartmentCreateCommand request, CancellationToken cancellationToken)
     {
         DepartmentDTO departmentDTO = mapper.Map<DepartmentDTO>(request);
+        departmentDTO.Id=Guid.NewGuid().ToString();
+
         Personal? personal = await userManager.FindByIdAsync(userId);
         Department department = Department.CreateDepartment(departmentDTO);
         await rules.DepartmentShouldNotBeNull(department, "Department oluşturulamadı");
