@@ -1,5 +1,6 @@
 ﻿using IKAPP.Domain.Entities.AggregateModels.Companies.CompanyDTOs;
 using IKAPP.Domain.Entities.AggregateModels.Permissions;
+using IKAPP.Domain.Entities.AggregateModels.Permissions.PermissionDTOs;
 using IKAPP.Domain.Entities.AggregateModels.TypeofPermissions.TypeofPermissionDTOs;
 using IKAPP.Domain.Entities.AggregateModels.TypeofPermissions.TypeofPermissionRules;
 using IKAPP.Domain.Entities.Enums;
@@ -44,6 +45,19 @@ public  class TypeofPermission:AuditableEntity,IAggregateRoot
         Duration = this.Duration,
         Gender = this.Gender,
     };
+    public static IEnumerable<TypeOfPermissionDTO> CreateTypeOfPermissionDTOs(IEnumerable<TypeofPermission> permissions)
+    {
+        List<TypeOfPermissionDTO> permissionDTOs = new List<TypeOfPermissionDTO>();
+        foreach (TypeofPermission permission in permissions)
+            permissionDTOs.Add(new TypeOfPermissionDTO()
+            {
+                Id = permission.Id,
+                Name = permission.Name.Value,
+                Duration = permission.Duration,
+                Gender = permission.Gender,
+            });
+        return permissionDTOs;
+    }
     public Task SoftDeleteTypeOfPermission()
     {
 

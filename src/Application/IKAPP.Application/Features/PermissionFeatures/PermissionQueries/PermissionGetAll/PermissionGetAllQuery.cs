@@ -11,7 +11,7 @@ namespace IKAPP.Application.Features.PermissionFeatures.PermissionQueries.Permis
 
 public class PermissionGetAllQuery:IRequest<IDataResult<IEnumerable<PermissionViewDTO>>>
 {
-    public string UserName { get; set; }
+   
     public bool Tracking { get; set; } = true;
     public bool IsApproval { get; set; } = false;
 }

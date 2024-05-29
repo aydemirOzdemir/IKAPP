@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <Folder Include="Features\AutFeatures\AuthExceptions\" />
-    <Folder Include="Features\PermissionFeatures\PermissionExceptions\" />
     <Folder Include="Features\PersonalFeatures\PersonalExceptions\" />
     <Folder Include="Features\RoleFeatures\RoleExceptions\" />
     <Folder Include="Features\TypeOfPermissionFeatures\TypeOfPermissionExceptions\" />

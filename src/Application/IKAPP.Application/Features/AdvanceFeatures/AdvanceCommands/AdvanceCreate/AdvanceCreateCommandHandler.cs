@@ -33,6 +33,7 @@ public class AdvanceCreateCommandHandler : BaseHandler<IAdvanceReadRepository, I
         advance.Company = personel.Company;
         advance.CompanyId = personel.CompanyId;
         advance.Name = request.TypeofAdvance.ToString();
+        advance.Id=Guid.NewGuid().ToString();
         Advance createdAdvance = await unitOfWork.WriteRepository.AddAsync(Advance.CreateAdvance(advance));
         await rules.AdvanceMustNotBeNull(createdAdvance);
         await unitOfWork.SaveAsync();

@@ -33,6 +33,7 @@ public class ExpenseCreateCommandHandler : BaseHandler<IExpenseReadRepository, I
         expenseDTO.Company = personal.Company;
         expenseDTO.CompanyId = personal.CompanyId;
         expenseDTO.Name = request.TypeofExpenses.ToString();
+        expenseDTO.Id=Guid.NewGuid().ToString();
         Expense? result = await unitOfWork.WriteRepository.AddAsync(Expense.CreateExpense(expenseDTO));
 
         await rules.ExpenseShouldNotBeNull(result,"Ekleme işlemi başarısız.");

@@ -1,4 +1,6 @@
-﻿using IKAPP.Domain.Entities.AggregateModels.Personals;
+﻿using IKAPP.Domain.Entities.AggregateModels.Departments.DepartmentDTOs;
+using IKAPP.Domain.Entities.AggregateModels.Departments;
+using IKAPP.Domain.Entities.AggregateModels.Personals;
 using IKAPP.Domain.Entities.AggregateModels.TypeofPermissions.TypeofPermissionDTOs;
 using IKAPP.Domain.Entities.AggregateModels.Vocations.VocationDTOs;
 using IKAPP.Domain.Entities.SeedWorks;
@@ -32,6 +34,17 @@ public  class Vocation:AuditableEntity,IAggregateRoot
         Id = this.Id,
         Name = this.Name.Value,
     };
+    public static IEnumerable<VocationDTO> CreateVocationDTOs(IEnumerable<Vocation> vocations)
+    {
+        List<VocationDTO> vocationDTOs = new List<VocationDTO>();
+        foreach (Vocation vocation in vocations)
+            vocationDTOs.Add(new VocationDTO()
+            {
+                Id = vocation.Id,
+                Name = vocation.Name.Value,
+            });
+        return vocationDTOs;
+    }
     public Task SoftDeleteVocation()
     {
         UpdateDeleteDate(DateTime.Now);

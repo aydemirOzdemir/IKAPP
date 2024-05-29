@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IKAPP.Application.Features.PermissionFeatures.PermissionCommands.PermissionEdit;
 
-public class PermissionEditCommand:IRequest<IDataResult<PermissionEditCommand>>
+public class PermissionEditCommand:IRequest<IResult>
 {
     public string Id { get; set; }
 

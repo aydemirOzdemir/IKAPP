@@ -24,6 +24,7 @@ public class CompanyCreateCommandHandler : BaseHandler<ICompanyReadRepository, I
     public async Task<IResult> Handle(CompanyCreateCommand request, CancellationToken cancellationToken)
     {
         CompanyDTO companyDTO = mapper.Map<CompanyDTO>(request);
+        companyDTO.Id=Guid.NewGuid().ToString();
         Company company = await unitOfWork.WriteRepository.AddAsync(Company.CreateCompany(companyDTO));
         await rules.CompanyShouldNotBeNull(company);
         await unitOfWork.SaveAsync();

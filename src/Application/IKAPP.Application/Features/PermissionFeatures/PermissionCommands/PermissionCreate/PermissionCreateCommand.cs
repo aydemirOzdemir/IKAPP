@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IKAPP.Application.Features.PermissionFeatures.PermissionCommands.PermissionCreate;
 
-public class PermissionCreateCommand:IRequest<IDataResult<PermissionCreateCommand>>
+public class PermissionCreateCommand:IRequest<IResult>
 {
     public DateTime? DateofReply { get; set; }
     public DateTime StartedDate { get; set; }
@@ -17,7 +17,7 @@ public class PermissionCreateCommand:IRequest<IDataResult<PermissionCreateComman
     public string TypeofPermissionId { get; set; }
 
 
-    public string? UserName { get; set; }
+   
 
 
 

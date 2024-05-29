@@ -12,8 +12,8 @@ public sealed record PermissionUpdateDTO
     public string Id { get; set; } = null!;
 
     public DateTime StartedDate { get; set; } = default!;
-    public DateTime FinishedDate { get; init; } = default!;
-    public byte DayCount { get; init; } = default!;
+    public DateTime FinishedDate { get; set; } = default!;
+    public byte DayCount { get; set; } = default!;
 
     public string TypeofPermissionId { get; set; } = default!;
     public TypeofPermission TypeofPermission { get; set; } = null!;
